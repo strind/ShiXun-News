@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/News-service/News-user-service" />
+    <file type="web" url="file://$PROJECT_DIR$/News-service/News-wemedia-service" />
     <file type="web" url="file://$PROJECT_DIR$/News-test" />
     <file type="web" url="file://$PROJECT_DIR$/News-utils" />
   </component>
@@ -17,6 +19,10 @@
         <option value="$PROJECT_DIR$/News-dubbo/pom.xml" />
         <option value="$PROJECT_DIR$/News-test/pom.xml" />
         <option value="$PROJECT_DIR$/News-utils/pom.xml" />
+        <option value="$PROJECT_DIR$/News-gateway/News-app-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/News-gateway/News-wemedia-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/News-service/News-article-service/pom.xml" />
+        <option value="$PROJECT_DIR$/News-service/News-user/pom.xml" />
       </list>
     </option>
   </component>

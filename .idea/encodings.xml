@@ -3,8 +3,13 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/News-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/News-dubbo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/News-gateway/News-app-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/News-gateway/News-wemedia-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/News-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/News-gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/News-model/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/News-service/News-article-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/News-service/News-user/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/News-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/News-test/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/News-utils/src/main/java" charset="UTF-8" />
