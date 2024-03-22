@@ -1,0 +1,9 @@
+
+c
+java:S2259K"AA "NullPointerException" could be thrown; "dto" is nullable here.(ÀÓ”÷ûÿÿÿÿ8ß¡‡‹æ1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8èİ‚‹æ1
+Z
+java:S1854R"8Remove this useless assignment to local variable "type".(’õóüüÿÿÿÿ8îİ‚‹æ1
+O
+java:S1128"-Remove this unused import 'java.sql.Wrapper'.(³¿……ıÿÿÿÿ8¾¤í©æ1
