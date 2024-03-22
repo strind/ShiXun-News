@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>News-utils</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <name>News-utils</name>
     <description>工具类</description>
 
@@ -51,6 +52,18 @@
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.protostuff</groupId>
+            <artifactId>protostuff-core</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.protostuff</groupId>
+            <artifactId>protostuff-runtime</artifactId>
+            <version>1.6.0</version>
         </dependency>
     </dependencies>
 

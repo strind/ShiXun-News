@@ -6,15 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="News-user" />
+        <module name="News-wemedia-service" />
         <module name="News-common" />
+        <module name="News-user-service" />
         <module name="News-app-gateway" />
         <module name="News-article-service" />
         <module name="News-model" />
-        <module name="News-service" />
         <module name="News-dubbo" />
         <module name="News-utils" />
         <module name="News-wemedia-gateway" />
+        <module name="News-file-starter" />
       </profile>
     </annotationProcessing>
   </component>
@@ -22,15 +23,18 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="News-app-gateway" options="-parameters" />
       <module name="News-article-service" options="-parameters" />
+      <module name="News-basic" options="-parameters" />
       <module name="News-common" options="-parameters" />
       <module name="News-dubbo" options="-parameters" />
+      <module name="News-file-starter" options="-parameters" />
       <module name="News-gateway" options="-parameters" />
       <module name="News-model" options="-parameters" />
       <module name="News-service" options="-parameters" />
       <module name="News-test" options="-parameters" />
-      <module name="News-user" options="-parameters" />
+      <module name="News-user-service" options="-parameters" />
       <module name="News-utils" options="-parameters" />
       <module name="News-wemedia-gateway" options="-parameters" />
+      <module name="News-wemedia-service" options="-parameters" />
       <module name="ShiXun_News" options="-parameters" />
     </option>
   </component>

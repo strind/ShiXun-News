@@ -9,6 +9,7 @@
     </parent>
 
     <artifactId>News-model</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
     <name>News-model</name>
     <description>实体类</description>
@@ -44,10 +45,7 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-        </dependency>
+
     </dependencies>
 
 </project>

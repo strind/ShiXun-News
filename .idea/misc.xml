@@ -23,10 +23,14 @@
         <option value="$PROJECT_DIR$/News-gateway/News-wemedia-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/News-service/News-article-service/pom.xml" />
         <option value="$PROJECT_DIR$/News-service/News-user/pom.xml" />
+        <option value="$PROJECT_DIR$/News-service/News-wemedia-service/pom.xml" />
+        <option value="$PROJECT_DIR$/News-service/News-user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/News-basic/pom.xml" />
+        <option value="$PROJECT_DIR$/News-basic/News-file-starter/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

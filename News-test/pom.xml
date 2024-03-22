@@ -9,6 +9,7 @@
     </parent>
 
     <artifactId>News-test</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
     <name>News-test</name>
     <description>测试类</description>
