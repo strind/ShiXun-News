@@ -1,0 +1,21 @@
+
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(®ÚÁôøÿÿÿÿ
+[	java:S112'"FDefine and throw a dedicated exception instead of using a generic one.(ì±İç
+7
+java:S1643H"Use a StringBuilder instead.(¨ñö‚ıÿÿÿÿ
+2
+java:S1643J"Use a StringBuilder instead.(í‘êÁ
+|
+java:S1488."fImmediately return this expression instead of assigning it to the temporary variable "originalString".(öÄ¡Ú
+L
+java:S6437 "6Revoke and change this password, as it is compromised.(“ÙÖŞ
+7
+java:S5542!"Use a secure padding scheme.(ñ¤ûÿÿÿÿ
+L
+java:S6437)"6Revoke and change this password, as it is compromised.(“ÙÖŞ
+7
+java:S5542*"Use a secure padding scheme.(ñ¤ûÿÿÿÿ
+<
+java:S11684"&Return an empty array instead of null.(¥¹ï
+<
+java:S11688"&Return an empty array instead of null.(¥¹ï

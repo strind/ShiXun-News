@@ -1,0 +1,27 @@
+
+
+java:S4165¯"jRemove this useless assignment; "decompressed" already holds the assigned value along all execution paths.(Äû—²
+R
+java:S2589\"7Remove this expression which always evaluates to "true"(§ÀÏŸûÿÿÿÿ
+N
+java:S2589"7Remove this expression which always evaluates to "true"(¦·ÆŠ
+S
+java:S2589‡"7Remove this expression which always evaluates to "true"(§ÀÏŸûÿÿÿÿ
+P
+java:S1118":Add a private constructor to hide the implicit public one.(ÞìŸê
+E
+java:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+>	java:S108S")Either remove or fill this block of code.(ï­£Ä
+>	java:S108Y")Either remove or fill this block of code.(ï­£Ä
+>	java:S108_")Either remove or fill this block of code.(ï­£Ä
+E
+java:S2093A"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+?	java:S108„")Either remove or fill this block of code.(ï­£Ä
+?	java:S108Š")Either remove or fill this block of code.(ï­£Ä
+E
+java:S2093v"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+?	java:S108´")Either remove or fill this block of code.(ï­£Ä
+?	java:S108º")Either remove or fill this block of code.(ï­£Ä
+?	java:S108À")Either remove or fill this block of code.(ï­£Ä
+F
+java:S2093¢"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ

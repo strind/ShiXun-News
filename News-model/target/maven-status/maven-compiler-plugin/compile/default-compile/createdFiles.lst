@@ -1,7 +1,14 @@
 com\strind\model\article\dtos\ArticleHomeDto.class
 com\strind\model\article\dtos\ArticleInfoDto.class
+com\strind\model\wemedia\dtos\WmLoginDto.class
+com\strind\model\wemedia\pojos\WeNews$Status.class
+com\strind\model\wemedia\pojos\WeUser.class
+com\strind\model\wemedia\pojos\WmChannel.class
+com\strind\model\wemedia\pojos\WeNews.class
+com\strind\model\wemedia\pojos\WeMaterial.class
 com\strind\model\user\dtos\LoginDto.class
 com\strind\model\user\dtos\UserRelationDto.class
+com\strind\model\wemedia\pojos\WeNewsMaterial.class
 com\strind\model\article\dtos\ArticleDto.class
 com\strind\model\article\pojos\AppArticleConfig.class
 com\strind\model\common\RespResult.class

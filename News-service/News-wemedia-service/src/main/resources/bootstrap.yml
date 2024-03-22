@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 123.57.165.115:8848
+      config:
+        server-addr: 123.57.165.115:8848
+        file-extension: yml

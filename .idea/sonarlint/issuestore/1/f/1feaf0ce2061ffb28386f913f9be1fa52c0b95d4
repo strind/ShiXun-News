@@ -1,0 +1,30 @@
+
+F
+java:S3740î"/Provide the parametrized type for this generic.(…ı¿¦
+F
+java:S3740ú"/Provide the parametrized type for this generic.(±¤“ö
+F
+java:S3740¡"/Provide the parametrized type for this generic.(é½ÇÖ
+F
+java:S3740¢"/Provide the parametrized type for this generic.(ÒÒ½½
+F
+java:S3740¶"/Provide the parametrized type for this generic.(ÏËéñ
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(áÇùêÿÿÿÿÿ
+U
+java:S1118":Add a private constructor to hide the implicit public one.(ÂÁîûÿÿÿÿ
+K
+java:S1172R"0Remove this unused method parameter "skipExist".(À§Òûøÿÿÿÿ
+R	java:S125¼"<This block of commented-out lines of code should be removed.(¢òş
+\
+java:S2147Ì"ECombine this catch with the one at line 202, which has the same body.(åşáÿ
+\
+java:S2147"ECombine this catch with the one at line 255, which has the same body.(Å¡ß
+\
+java:S2147¼"ECombine this catch with the one at line 314, which has the same body.(Å¡ß
+U
+java:S1155Ì">Use isEmpty() to check whether the collection is empty or not.(ˆãëÇ
+=
+java:S1168Ï"&Return an empty array instead of null.(¥¹ï
+C
+java:S1144ú",Remove this unused private "getBean" method.(±¤“ö

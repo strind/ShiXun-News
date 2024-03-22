@@ -1,0 +1,12 @@
+
+J
+java:S3740"/Provide the parametrized type for this generic.(œ¦çñÿÿÿÿÿ
+J
+java:S1066"/Merge this if statement with the enclosing one.(•ç¥şÿÿÿÿ
+?
+java:S2629"$Invoke method(s) only conditionally.(Ù×™üÿÿÿÿ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(˜ÛÁ¦ùÿÿÿÿ
+Å
+java:S6548"®An Enum-based Singleton implementation was detected. Make sure the use of the Singleton pattern is required and an Enum-based implementation is the right one for the context.(‰± ™
+|
+java:S3457"aNo need to call "toString()" method as formatting and string conversion is done by the Formatter.(Ù×™üÿÿÿÿ

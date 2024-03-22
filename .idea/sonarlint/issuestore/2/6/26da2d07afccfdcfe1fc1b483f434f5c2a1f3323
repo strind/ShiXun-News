@@ -1,0 +1,30 @@
+
+t
+java:S1488"^Immediately return this expression instead of assigning it to the temporary variable "result".(ξ®Η‘
+t
+java:S14883"^Immediately return this expression instead of assigning it to the temporary variable "result".(ξ®Η‘
+k
+java:S2259…"O"NullPointerException" will be thrown when invoking method "byteToHexString()".(οΩ‰ÿÿÿÿÿ
+f
+java:S2259"O"NullPointerException" will be thrown when invoking method "byteToHexString()".(βή
+k
+java:S2259™"O"NullPointerException" will be thrown when invoking method "byteToHexString()".(Φηώÿÿÿÿ
+k
+java:S2259–"O"NullPointerException" will be thrown when invoking method "byteToHexString()".(ƒΑ ψÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Κ§Ϊ 
+u
+java:S1149C"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(ν…Ò‰
+F
+java:S5542"+Use another cipher mode or disable padding.(›ό‹χωÿÿÿÿ
+9
+java:S5547"Use a strong cipher algorithm.(›ό‹χωÿÿÿÿ
+B
+java:S3329"'Use a dynamically-generated, random IV.(ª Θϋÿÿÿÿ
+<
+java:S1168!"&Return an empty array instead of null.(¥Ήο
+F
+java:S55421"+Use another cipher mode or disable padding.(›ό‹χωÿÿÿÿ
+9
+java:S55471"Use a strong cipher algorithm.(›ό‹χωÿÿÿÿ
+<
+java:S11689"&Return an empty array instead of null.(¥Ήο
