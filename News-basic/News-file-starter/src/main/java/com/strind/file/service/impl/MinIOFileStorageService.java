@@ -141,14 +141,21 @@ public class MinIOFileStorageService implements FileStorageService {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024];
         int rc = 0;
-        while (true){
-            try {
-                if ((rc = inputStream.read(buffer,0,1024)) > 0)break;
-            }catch (IOException e){
-                e.printStackTrace();
+        try {
+            while ((rc = inputStream.read(buffer)) > 0){
+                byteArrayOutputStream.write(buffer,0,rc);
             }
-            byteArrayOutputStream.write(buffer,0,rc);
+        }catch (Exception e){
+            log.error("文件下载异常：{}", e.getMessage());
+            e.printStackTrace();
+        }finally {
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                log.error("文件流关闭");
+            }
         }
+
         return byteArrayOutputStream.toByteArray();
     }
 

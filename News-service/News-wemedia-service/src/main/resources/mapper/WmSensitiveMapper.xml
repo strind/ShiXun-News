@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.strind.wemedia.mapper.WmSensitiveMapper">
+
+    <select id="getSensitive" resultType="java.lang.String">
+        select sensitives
+        from wm_sensitive
+    </select>
+
+
+</mapper>

@@ -10,9 +10,9 @@ import com.strind.model.common.RespResult;
 import com.strind.model.common.enums.AppHttpCodeEnum;
 import com.strind.service.AppArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import java.sql.Wrapper;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -23,6 +23,7 @@ import java.util.Objects;
  * @description 文章首页服务
  * @date 2024/3/21 21:06
  */
+
 @Service
 public class AppArticleServiceImpl extends ServiceImpl<AppArticleMapper, AppArticle> implements AppArticleService {
 
@@ -92,4 +93,5 @@ public class AppArticleServiceImpl extends ServiceImpl<AppArticleMapper, AppArti
             dto.setMinBehotTime(new Date());
         }
     }
+
 }

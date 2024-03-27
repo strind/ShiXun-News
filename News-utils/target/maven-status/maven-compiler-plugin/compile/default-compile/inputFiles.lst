@@ -1,8 +1,10 @@
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\UrlSignUtils.java
+E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\thread\AppThreadLocalUtil.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\Base64Utils.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\SensitiveWordUtil.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\MD5Utils.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\DateUtils.java
+E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\thread\WmmediaThreadLocalUtil.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\BCrypt.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\IdsUtils.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\SnowflakeIdWorker.java

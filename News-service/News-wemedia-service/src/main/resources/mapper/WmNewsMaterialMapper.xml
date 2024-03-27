@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.strind.wemedia.mapper.WmNewsMaterialMapper">
+
+    <resultMap id="resultMap" type="com.strind.model.wemedia.pojos.WmNewsMaterial">
+        <id column="id" property="id"/>
+        <id column="material_id" property="materialId"></id>
+        <id column="type" property="type"></id>
+        <id column="ord" property="ord"></id>
+    </resultMap>
+    <insert id="saveRelation">
+        insert into wm_news_material (material_id, news_id, type, ord)
+        values
+        <foreach collection="ids" index="ord" item="mid" separator=",">
+            (#{mid},#{newsId},#{type},#{ord})
+        </foreach>
+    </insert>
+
+</mapper>

@@ -1,4 +1,4 @@
-com\strind\gateway\config\CorsConfig.class
 com\strind\gateway\utils\AppJwtUtil.class
 com\strind\gateway\AppGatewayApplication.class
 com\strind\gateway\filter\AuthorizeFilter.class
+com\strind\gateway\config\CorsConfig.class

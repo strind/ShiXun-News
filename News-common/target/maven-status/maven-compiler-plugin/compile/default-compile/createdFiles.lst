@@ -1,1 +1,7 @@
 com\strind\constants\ArticleConstants.class
+com\strind\rabbitmq\RabbitMQConstants.class
+com\strind\constants\WmmediaConstants.class
+com\strind\constants\WmNewsConstants.class
+META-INF\spring-configuration-metadata.json
+com\strind\exception\CustomException.class
+com\strind\client\Tess4jClient.class

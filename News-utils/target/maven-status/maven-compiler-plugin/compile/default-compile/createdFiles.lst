@@ -17,3 +17,4 @@ com\strind\common\JdkSerializeUtil.class
 com\strind\common\DESUtils.class
 com\strind\common\DateUtils.class
 com\strind\common\FileUtils.class
+com\strind\thread\WmmediaThreadLocalUtil.class

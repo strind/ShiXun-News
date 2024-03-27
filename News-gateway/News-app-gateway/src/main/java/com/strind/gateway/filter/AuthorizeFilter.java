@@ -3,6 +3,7 @@ package com.strind.gateway.filter;
 import com.strind.gateway.utils.AppJwtUtil;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.annotation.Order;
@@ -35,6 +36,8 @@ public class AuthorizeFilter implements GlobalFilter {
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpResponse response = exchange.getResponse();
 
+        log.info("url: {}",request.getURI());
+
         // 判断是否是登录
         if (request.getURI().getPath().contains("/login")) {
             // 放行
@@ -43,7 +46,7 @@ public class AuthorizeFilter implements GlobalFilter {
 
         // 获取token
         String token = request.getHeaders().getFirst("token");
-        if (token == null || token.equals("")){
+        if (StringUtils.isBlank(token)){
             response.setStatusCode(HttpStatus.UNAUTHORIZED);
             return response.setComplete();
         }

@@ -12,8 +12,10 @@
     <file url="file://$PROJECT_DIR$/News-gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/News-model/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/News-service/News-article-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/News-service/News-autoscan-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/News-service/News-user-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/News-service/News-wemedia-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/News-service/autoscan-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/News-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/News-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/News-test/src/main/java" charset="UTF-8" />

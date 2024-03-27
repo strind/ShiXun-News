@@ -1,5 +1,6 @@
 package com.strind;
 
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2024/3/21 20:56
  */
 @SpringBootApplication
+@EnableDubbo
 public class ArticleApplication {
 
     public static void main(String[] args) {

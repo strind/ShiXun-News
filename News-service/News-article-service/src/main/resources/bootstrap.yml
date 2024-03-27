@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: article-service
   cloud:
     nacos:
       discovery:
@@ -6,3 +8,12 @@ spring:
       config:
         server-addr: 123.57.165.115:8848
         file-extension: yml
+        prefix: article-service
+      username: nacos
+      password: nacos
+# dubbo 服务提供者配置
+dubbo:
+  scan:
+    base-packages: com.strind.dubbo
+  registry:
+    address: nacos://123.57.165.115:8848?username=nacos&password=nacos

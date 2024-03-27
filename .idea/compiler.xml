@@ -12,17 +12,22 @@
         <module name="News-app-gateway" />
         <module name="News-article-service" />
         <module name="News-model" />
+        <module name="autoscan-service" />
         <module name="News-dubbo" />
         <module name="News-utils" />
         <module name="News-wemedia-gateway" />
         <module name="News-file-starter" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="News-autoscan-service" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="News-app-gateway" options="-parameters" />
       <module name="News-article-service" options="-parameters" />
+      <module name="News-autoscan-service" options="-parameters" />
       <module name="News-basic" options="-parameters" />
       <module name="News-common" options="-parameters" />
       <module name="News-dubbo" options="-parameters" />
@@ -36,6 +41,7 @@
       <module name="News-wemedia-gateway" options="-parameters" />
       <module name="News-wemedia-service" options="-parameters" />
       <module name="ShiXun_News" options="-parameters" />
+      <module name="autoscan-service" options="-parameters" />
     </option>
   </component>
 </project>

@@ -18,14 +18,14 @@ spring:
               - OPTION
       routes:
         - id: user-service
-          uri: http://localhost:12000
+          uri: lb://user-service
           predicates:
             - Path=/user/**
           filters:
             # 跳过一个路径前缀
             - StripPrefix=1
         - id: article-service
-          uri: http://localhost:13000
+          uri: lb://article-service
           predicates:
             - Path=/article/**
           filters:

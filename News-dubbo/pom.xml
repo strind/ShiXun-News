@@ -12,5 +12,11 @@
     <artifactId>News-dubbo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.strind</groupId>
+            <artifactId>News-model</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

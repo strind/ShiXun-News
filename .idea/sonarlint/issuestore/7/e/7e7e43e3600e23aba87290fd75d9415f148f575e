@@ -1,0 +1,11 @@
+
+[	java:S112P"FDefine and throw a dedicated exception instead of using a generic one.(¬—…‹
+J
+java:S3740F"/Provide the parametrized type for this generic.(•ÓÌùÿÿÿÿ
+v
+java:S1488e"[Immediately return this expression instead of assigning it to the temporary variable "key".(û½›ÿÿÿÿÿ
+‚
+java:S1130P"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(¬—…‹
+Q
+java:S6437e"6Revoke and change this password, as it is compromised.(û½›ÿÿÿÿÿ
+V	java:S125j"<This block of commented-out lines of code should be removed.(âŒÕúÿÿÿÿÿ

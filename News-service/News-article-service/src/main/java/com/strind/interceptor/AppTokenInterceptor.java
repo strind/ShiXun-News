@@ -1,7 +1,9 @@
 package com.strind.interceptor;
 
 import com.strind.model.user.pojos.AppUser;
+import com.strind.model.wemedia.pojos.WmUser;
 import com.strind.thread.AppThreadLocalUtil;
+import com.strind.thread.WmmediaThreadLocalUtil;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;

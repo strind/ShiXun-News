@@ -137,5 +137,11 @@ public class AppArticle implements Serializable {
     @TableField("static_url")
     private String staticUrl;
 
+    /**
+     * 冗余字段
+     */
+    @TableField(exist = false)
+    private String content;
+
 
 }

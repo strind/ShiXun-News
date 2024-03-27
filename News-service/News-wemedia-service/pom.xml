@@ -14,4 +14,28 @@
     <name>News-wemedia-service</name>
     <description>自媒体端微服务模块</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.strind</groupId>
+            <artifactId>News-file-starter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.strind</groupId>
+            <artifactId>News-dubbo</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.spring</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>1.0.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-registry-nacos</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

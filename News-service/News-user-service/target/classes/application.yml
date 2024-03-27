@@ -1,9 +1,8 @@
 
 spring:
 
-  application:
-    name: user-service
-
+  profiles:
+    active: dev
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver

@@ -1,0 +1,28 @@
+
+spring:
+  application:
+    name: News-wemedia-gateway
+  cloud:
+    gateway:
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        corsConfigurations:
+          '[/**]':
+            allowedHeaders: "*"
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTION
+      routes:
+        - id: wemedia-service
+          uri: lb://wemedia-service
+          predicates:
+            - Path=/wemedia/**
+          filters:
+            - StripPrefix=1
+
+server:
+  port: 21400

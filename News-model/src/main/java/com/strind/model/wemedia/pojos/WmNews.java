@@ -127,4 +127,17 @@ public class WmNews {
             return this.code;
         }
     }
+
+    /**
+     * 冗余字段
+     */
+    @TableField(exist = false)
+    public String authorName;
+
+    /**
+     * 冗余字段
+     */
+    @TableField(exist = false)
+    public String channelName;
+
 }

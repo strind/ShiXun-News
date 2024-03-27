@@ -45,7 +45,7 @@ public class WmUserServiceImpl extends ServiceImpl<WmUserMapper, WmUser> impleme
         }
 
         //3.比对密码
-        String salt = wmUser.getSalt();
+        String salt = wmUser.getSalt() == null ? "" : wmUser.getSalt();
         String pswd = dto.getPassword();
         pswd = DigestUtils.md5DigestAsHex((pswd + salt).getBytes());
         if(pswd.equals(wmUser.getPassword())){
@@ -60,5 +60,7 @@ public class WmUserServiceImpl extends ServiceImpl<WmUserMapper, WmUser> impleme
         }else {
             return RespResult.errorResult(AppHttpCodeEnum.LOGIN_PASSWORD_ERROR);
         }
+
+
     }
 }

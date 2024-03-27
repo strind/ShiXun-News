@@ -91,6 +91,7 @@ public class SensitiveWordUtil {
      * @return
      */
     public static Map<String, Integer> matchWords(String text) {
+        long start = System.currentTimeMillis();
         Map<String, Integer> wordMap = new HashMap<>();
         int len = text.length();
         for (int i = 0; i < len; i++) {
@@ -107,6 +108,7 @@ public class SensitiveWordUtil {
                 i += wordLength - 1;
             }
         }
+        System.out.println("文章扫描耗时：" + (System.currentTimeMillis() - start));
         return wordMap;
     }
 

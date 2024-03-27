@@ -1,1 +1,4 @@
-E:\work_project\ShiXun_News\News-gateway\News-wemedia-gateway\src\main\java\com\strind\newswemediagateway\NewsWemediaGatewayApplication.java
+E:\work_project\ShiXun_News\News-gateway\News-wemedia-gateway\src\main\java\com\strind\gateway\NewsWemediaGatewayApplication.java
+E:\work_project\ShiXun_News\News-gateway\News-wemedia-gateway\src\main\java\com\strind\gateway\config\CorsConfig.java
+E:\work_project\ShiXun_News\News-gateway\News-wemedia-gateway\src\main\java\com\strind\gateway\filter\AuthorizeFilter.java
+E:\work_project\ShiXun_News\News-gateway\News-wemedia-gateway\src\main\java\com\strind\gateway\utils\AppJwtUtil.java
