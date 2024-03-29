@@ -1,8 +1,11 @@
 package com.strind.common;
 
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.*;
 
+@Slf4j
 public class SensitiveWordUtil {
 
     public static Map<String, Object> dictionaryMap = new HashMap<>();
@@ -108,7 +111,7 @@ public class SensitiveWordUtil {
                 i += wordLength - 1;
             }
         }
-        System.out.println("文章扫描耗时：" + (System.currentTimeMillis() - start));
+        log.info("文章敏感词扫描耗时：{}", (System.currentTimeMillis() - start));
         return wordMap;
     }
 

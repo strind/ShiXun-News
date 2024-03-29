@@ -23,6 +23,7 @@ import com.strind.model.wemedia.dtos.WmNewsPageDto;
 import com.strind.model.wemedia.pojos.WmMaterial;
 import com.strind.model.wemedia.pojos.WmNews;
 import com.strind.model.wemedia.pojos.WmNewsMaterial;
+import com.strind.rabbitmq.RabbitMQConstants;
 import com.strind.thread.WmmediaThreadLocalUtil;
 import com.strind.wemedia.mapper.*;
 import com.strind.wemedia.service.WmNewsService;
@@ -30,6 +31,14 @@ import com.strind.wemedia.task.ExecuteTaskPool;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageBuilder;
+import org.springframework.amqp.rabbit.annotation.Exchange;
+import org.springframework.amqp.rabbit.annotation.Queue;
+import org.springframework.amqp.rabbit.annotation.QueueBinding;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,8 +73,8 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
     @Autowired
     private WmSensitiveMapper wmSensitiveMapper;
 
-//    @Autowired
-//    private RabbitTemplate rabbitTemplate;
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @Autowired
     private Tess4jClient tess4jClient;
@@ -159,8 +168,8 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
         }
         saveOrUpdateWmNews(wmNews);
         if (WmNewsConstants.DRAFT.equals(dto.getStatus())){
-            // 存草稿
-            return RespResult.okResult("ok");
+            log.info("文章{}已存为草稿", dto.getId());
+            return RespResult.okResult(AppHttpCodeEnum.SUCCESS);
         }
         // 提交审核
 
@@ -179,9 +188,7 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
         wmNews.setChannelName(channelName);
         Long articleId = wmNewsMapper.getArticleId(wmNews.getId());
         wmNews.setArticleId(articleId);
-        // TODO: 2024/3/24 提交审核
         // 提交线程池，异步处理
-        log.info("提交任务交给线程池处理");
         ExecuteTaskPool.addTask(new AutoScanTask(wmNews));
 
         return RespResult.okResult(AppHttpCodeEnum.SUCCESS);
@@ -314,7 +321,7 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
 
         @Override
         public void run() {
-            log.info("开始进行文章的自动审核 {}", wmNews.getId());
+            log.info("开始进行文章的审核 {}", wmNews.getId());
             // 根据发布时间进行分类
             long publishTime = wmNews.getPublishTime().getTime();
             // 开始审核
@@ -328,12 +335,12 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
                     // 提取文本和图片
                     Map<String, Object> imagesAndText = getImgesAndText(wmNews);
 
-                    log.info("文章正式开始审核 + {}",wmNews.getId());
                     Map<String, Integer> result = SensitiveWordUtil.matchWords((String) imagesAndText.get("content"));
                     if (!result.isEmpty()){
-                        // 审核失败, 放入队列，异步更新
+                        // 审核失败。
                         wmNews.setStatus(WmNews.Status.FAIL.getCode());
                         String rean = StringUtils.join(result.keySet().stream().collect(Collectors.toList()), ",");
+                        log.warn("文章审核失败 {}", rean);
                         wmNews.setReason("文本含有" + rean);
                         update(wmNews,Wrappers.<WmNews>lambdaUpdate().eq(WmNews::getId,wmNews.getId()));
                         return;
@@ -349,48 +356,33 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
                             String sa = tess4jClient.doOCR(imageFile);
                             Map<String, Integer> map = SensitiveWordUtil.matchWords(sa);
                             if (!map.isEmpty()){
-                                // TODO: 2024/3/24  审核失败, 放入队列，异步更新
                                 wmNews.setStatus(WmNews.Status.FAIL.getCode());
                                 String rean = StringUtils.join(result.keySet().stream().collect(Collectors.toList()), ",");
                                 wmNews.setReason("图片含有" + rean);
+                                log.warn("文章审核失败 {}", rean);
                                 update(wmNews,Wrappers.<WmNews>lambdaUpdate().eq(WmNews::getId,wmNews.getId()));
                                 return;
                             }
                         }catch (Exception e){
-                            log.error("图片审核失败：{}", image);
+                            log.error("图片审核过程含有异常：{}", image);
                         }
-                    }
-
-                    // TODO: 2024/3/24 需要使用Dubbo 审核成功，保存文章在app端
-                    AppArticle appArticle = new AppArticle();
-                    BeanUtils.copyProperties(wmNews,appArticle);
-                    appArticle.setAuthorId(Long.valueOf(wmNews.getUserId()));
-                    appArticle.setAuthorName(wmNews.getAuthorName());
-                    appArticle.setChannelName(wmNews.getChannelName());
-                    appArticle.setLayout(wmNews.getType());
-                    appArticle.setContent(wmNews.getContent());
-                    if (wmNews.getArticleId() != null){
-                        // 由对于的文章存在，执行更新
-                        saveArticle.updateArticle(appArticle);
-                    }else {
-                        // 文章不存在，执行保存
-                        log.info("调用远程服务，保存文章");
-                        Long articleId = saveArticle.saveArticle(appArticle);
-                        // 将文章id放入mq, 在app更改
-                        wmNews.setArticleId(articleId);
                     }
                     // 判断是否发布
                     long currentTime = new Date().getTime();
                     if (publishTime <= currentTime){
-                        // 放入mq, 去更改文章状态（写入app端文章的id）
-                        wmNews.setStatus(WmNews.Status.PUBLISHED.getCode());
-                        update(wmNews,Wrappers.<WmNews>lambdaUpdate().eq(WmNews::getId,wmNews.getId()));
-                        log.info("文章 {} 的审核正式结束", wmNews.getId());
+                        savaOrUpdateArticle(wmNews);
                     }else {
                         // TODO: 2024/3/27 定时发布功能
                         wmNews.setStatus(WmNews.Status.SUCCESS.getCode());
                         update(wmNews,Wrappers.<WmNews>lambdaUpdate().eq(WmNews::getId,wmNews.getId()));
                         log.info("文章 {} 的审核正式结束", wmNews.getId());
+                        CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
+                        Message message = MessageBuilder
+                            .withBody(ProtostuffUtil.serialize(wmNews.getId()))
+                            .setExpiration(String.valueOf((publishTime - currentTime) / 1000))
+                            .build();
+                        rabbitTemplate.convertAndSend(RabbitMQConstants.SINGLE_EXCHANGE,RabbitMQConstants.DEATH_MESSAGE,
+                            message,correlationData);
                     }
                 }
             }
@@ -425,5 +417,46 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
             return ans;
         }
     }
+
+    /**
+     * 处理定时任务
+     */
+    @RabbitListener(bindings = @QueueBinding(
+        value = @Queue(name = RabbitMQConstants.DELAY_QUEUE, declare = "true"),
+        exchange = @Exchange(name = RabbitMQConstants.DEATH_EXCHANGE),
+        key = RabbitMQConstants.DEATH_MESSAGE
+    ))
+    public void executeFromDelayQueue(byte[] data){
+        log.info("接收到队列中的消息");
+        Integer id = ProtostuffUtil.deserialize(data, Integer.class);
+        WmNews wmNews = wmNewsMapper.selectById(id);
+
+        savaOrUpdateArticle(wmNews);
+    }
+
+    private void savaOrUpdateArticle(WmNews wmNews) {
+        AppArticle appArticle = new AppArticle();
+        BeanUtils.copyProperties(wmNews,appArticle);
+        appArticle.setAuthorId(Long.valueOf(wmNews.getUserId()));
+        appArticle.setAuthorName(wmNews.getAuthorName());
+        appArticle.setChannelName(wmNews.getChannelName());
+        appArticle.setLayout(wmNews.getType());
+        appArticle.setContent(wmNews.getContent());
+
+        // app端文章
+        if (wmNews.getArticleId() != null){
+            // 由对于的文章存在，执行更新
+            saveArticle.updateArticle(appArticle);
+        }else {
+            // 文章不存在，执行保存
+            log.info("调用远程服务，保存文章");
+            Long articleId = saveArticle.saveArticle(appArticle);
+            wmNews.setArticleId(articleId);
+        }
+        wmNews.setStatus(WmNews.Status.PUBLISHED.getCode());
+        update(wmNews,Wrappers.<WmNews>lambdaUpdate().eq(WmNews::getId, wmNews.getId()));
+        log.info("文章 {} 的审核正式结束", wmNews.getId());
+    }
+
 
 }

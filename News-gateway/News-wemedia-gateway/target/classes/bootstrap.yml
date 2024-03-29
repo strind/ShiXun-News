@@ -10,3 +10,24 @@ spring:
         file-extension: yml
         username: nacos
         password: nacos
+
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedHeaders: "*"
+            allowedOriginPatterns: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTION
+
+      routes:
+        - id: wemedia-service
+          uri: lb://wemedia-service
+          predicates:
+            - Path=/wemedia/**
+          filters:
+            - StripPrefix=1

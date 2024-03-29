@@ -6,3 +6,5 @@ _
 java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8‹­ìç1
 _
 java:S6813'"BRemove this field injection and use constructor injection instead.(êæÄŞ8‹­ìç1
+R
+java:S1874¥"/Remove this use of "isEmpty"; it is deprecated.(ç†äÍúÿÿÿÿ8ìĞçÍè1

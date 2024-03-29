@@ -34,7 +34,6 @@ public class AuthorizeFilter implements GlobalFilter {
         // 获取request 和 response
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpResponse response = exchange.getResponse();
-;
 
         // 判断是否是登录
         if (request.getURI().getPath().contains("/login")) {

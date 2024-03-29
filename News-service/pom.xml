@@ -29,6 +29,7 @@
         <dependency>
             <groupId>com.strind</groupId>
             <artifactId>News-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -69,13 +70,6 @@
             </exclusions>
         </dependency>
 
-        <!--消息队列-->
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-            <optional>true</optional>
-        </dependency>-->
-
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
@@ -86,5 +80,21 @@
             <artifactId>nacos-client</artifactId>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.strind</groupId>
+                <artifactId>News-common</artifactId>
+            </dependency>
+
+            <!--消息队列-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
 
 </project>

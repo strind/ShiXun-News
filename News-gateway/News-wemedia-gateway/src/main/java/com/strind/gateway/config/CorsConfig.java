@@ -1,5 +1,6 @@
 package com.strind.gateway.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -22,7 +23,7 @@ public class CorsConfig {
         //允许所有的方法
         config.addAllowedMethod("*");
         //运行所有的域进行请求
-        config.addAllowedOrigin("*");
+        config.addAllowedOriginPattern("*");
         //允许所有的请求头
         config.addAllowedHeader("*");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(new PathPatternParser());

@@ -1345,8 +1345,6 @@ m
 `News-service/News-wemedia-service/src/main/java/com/strind/wemedia/mapper/WmSensitiveMapper.java,c\5\c53908b1d9cb2682584d9212eea976ccad137c2b
 t
 DNews-dubbo/src/main/java/com/strind/commonInterface/SaveArticle.java,7\9\79e5ed6e733be8957ed7285b26ebbb825563d441
-ç
-]News-service/News-wemedia-service/src/main/java/com/strind/wemedia/task/AutoScanTaskCast.java,e\0\e03fa0bd1d5cdcf9abe991fc8eca642ea26e62ac
 à
 XNews-service/News-article-service/src/main/java/com/strind/dubbo/SaveArticleService.java,1\1\1182bdbc149daed5709cbc1ab2ab0447f27f957e
 ç
@@ -2405,8 +2403,6 @@ Q.idea/sonarlint/securityhotspotstore/8/f/8f3536ccafb61ba526c1d6cb89a60500924ebc
 Q.idea/sonarlint/securityhotspotstore/8/f/8fe47f3367cbffe37ac554e2e7ca73fcdab43bfc,4\b\4b4076b16bda76bea29c9c666be8746b78bca63e
 Å
 Q.idea/sonarlint/securityhotspotstore/e/0/e0ff521571664cd74cae0942e628ee5934328efb,0\2\02c0ab1710e41624dd223f45d1eac7f11080d377
-Å
-Q.idea/sonarlint/securityhotspotstore/e/0/e03fa0bd1d5cdcf9abe991fc8eca642ea26e62ac,b\8\b8e14ae22d079b537914e88a39f9308cc018670b
 w
 G.idea/sonarlint/issuestore/b/c/bc7e60e08e6fb88b1b31f31aa98f12ae2a8958a0,f\1\f13108e8d35400c24f47220eb4c2bbad31b460fe
 w
@@ -2833,3 +2829,5 @@ w
 G.idea/sonarlint/issuestore/5/8/58d07ed3bf7a3a2d206fd0e6938f6ff6e3bd26db,d\7\d74c1d8b86d87030aebf39f9f1eb53ffcdeb8175
 Å
 Q.idea/sonarlint/securityhotspotstore/f/2/f24b52531bd5859392fadf24129538076301411e,3\8\38d6e3d03494f4e9d831a5875c77cbfa48310663
+w
+G.idea/sonarlint/issuestore/1/d/1d309c1ade1f44875573ed8eb4b7798fc04121b3,b\d\bdeb83bc61f976cf7171dd9e8472bef9066b3432

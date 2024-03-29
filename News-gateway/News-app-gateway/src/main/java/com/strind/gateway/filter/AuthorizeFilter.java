@@ -1,9 +1,9 @@
 package com.strind.gateway.filter;
 
+import com.alibaba.cloud.commons.lang.StringUtils;
 import com.strind.gateway.utils.AppJwtUtil;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.annotation.Order;
