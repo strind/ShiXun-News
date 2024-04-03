@@ -1,19 +1,26 @@
 package com.strind.service.impl;
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.strind.common.ProtostuffUtil;
 import com.strind.constants.ArticleConstants;
+import com.strind.mapper.AppArticleConfigMapper;
 import com.strind.mapper.AppArticleMapper;
 import com.strind.model.article.dtos.ArticleHomeDto;
 import com.strind.model.article.dtos.ArticleInfoDto;
 import com.strind.model.article.pojos.AppArticle;
+import com.strind.model.article.pojos.AppArticleConfig;
 import com.strind.model.common.RespResult;
 import com.strind.model.common.enums.AppHttpCodeEnum;
+import com.strind.rabbitmq.RabbitMQConstants;
 import com.strind.service.AppArticleService;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -28,6 +35,9 @@ public class AppArticleServiceImpl extends ServiceImpl<AppArticleMapper, AppArti
 
     @Autowired
     private AppArticleMapper appArticleMapper;
+
+    @Autowired
+    private AppArticleConfigMapper appArticleConfigMapper;
 
     @Override
     public RespResult load(ArticleHomeDto dto, Short type) {
@@ -92,5 +102,20 @@ public class AppArticleServiceImpl extends ServiceImpl<AppArticleMapper, AppArti
             dto.setMinBehotTime(new Date());
         }
     }
+
+    // TODO: 2024/4/2 监听队列，更改文章的上下架状态
+    @RabbitListener(queues = RabbitMQConstants.SINGLE_EXCHANGE)
+    public void downOrUpListener(byte[] data){
+        Map<String, String> map = ProtostuffUtil.deserialize(data, Map.class);
+        Long articleId = Long.valueOf(map.get("articleId"));
+        Short type = Short.valueOf(map.get("type"));
+        AppArticleConfig appArticleConfig = new AppArticleConfig();
+        appArticleConfig.setArticleId(articleId);
+        appArticleConfig.setIsDown(Short.valueOf("0").equals(type));
+        // 更新article的配置文件
+        appArticleConfigMapper.update(appArticleConfig, Wrappers.<AppArticleConfig>lambdaUpdate()
+            .eq(AppArticleConfig::getArticleId, appArticleConfig.getArticleId()));
+    }
+
 
 }

@@ -1,45 +1,51 @@
 
-L
-java:S3740k"/Provide the parametrized type for this generic.(şŒ•8®äËÕè1
-L
-java:S3740k"/Provide the parametrized type for this generic.(şŒ•8¯äËÕè1
 M
-java:S3740Š"/Provide the parametrized type for this generic.(„î¢¥8¯äËÕè1
+java:S3740•"/Provide the parametrized type for this generic.(şŒ•8¤‚ïöé1
 M
-java:S3740›"/Provide the parametrized type for this generic.(¿•Ê†8¯äËÕè1
+java:S3740•"/Provide the parametrized type for this generic.(şŒ•8¤‚ïöé1
 M
-java:S3740œ"/Provide the parametrized type for this generic.(©çÔĞ8¯äËÕè1
+java:S3740´"/Provide the parametrized type for this generic.(„î¢¥8¤‚ïöé1
 M
-java:S3740"/Provide the parametrized type for this generic.(š‰ÔÉ8¯äËÕè1
+java:S3740Ê"/Provide the parametrized type for this generic.(¿•Ê†8¤‚ïöé1
 M
-java:S3740"/Provide the parametrized type for this generic.(©çÔĞ8¯äËÕè1
+java:S3740Ë"/Provide the parametrized type for this generic.(©çÔĞ8¥‚ïöé1
+M
+java:S3740È"/Provide the parametrized type for this generic.(š‰ÔÉ8¥‚ïöé1
+M
+java:S3740É"/Provide the parametrized type for this generic.(©çÔĞ8¥‚ïöé1
 d
-java:S1192"FDefine a constant instead of duplicating this literal "value" 3 times.(íØíŠ8¯äËÕè1
+java:S1192Í"FDefine a constant instead of duplicating this literal "value" 3 times.(íØíŠ8¥‚ïöé1
+ƒ
+java:S1192¨"`Define a constant instead of duplicating this literal "æ–‡ç«  {} çš„å®¡æ ¸æ­£å¼ç»“æŸ" 3 times.(ª˜ŠÉúÿÿÿÿ8¥‚ïöé1
 _
-java:S6813@"BRemove this field injection and use constructor injection instead.(êæÄŞ8ëäËÕè1
+java:S6813H"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ‚ïöé1
 _
-java:S6813C"BRemove this field injection and use constructor injection instead.(êæÄŞ8ëäËÕè1
+java:S6813K"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ‚ïöé1
 _
-java:S6813F"BRemove this field injection and use constructor injection instead.(êæÄŞ8ëäËÕè1
+java:S6813N"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ‚ïöé1
 _
-java:S6813I"BRemove this field injection and use constructor injection instead.(êæÄŞ8ëäËÕè1
+java:S6813Q"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ‚ïöé1
 _
-java:S6813L"BRemove this field injection and use constructor injection instead.(êæÄŞ8ëäËÕè1
+java:S6813T"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ‚ïöé1
 _
-java:S6813O"BRemove this field injection and use constructor injection instead.(êæÄŞ8ëäËÕè1
+java:S6813W"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ‚ïöé1
 _
-java:S6813R"BRemove this field injection and use constructor injection instead.(êæÄŞ8ëäËÕè1
+java:S6813Z"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ‚ïöé1
 _
-java:S6813U"BRemove this field injection and use constructor injection instead.(êæÄŞ8ëäËÕè1
+java:S6813]"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ‚ïöé1
 _
-java:S6813\"BRemove this field injection and use constructor injection instead.(êæÄŞ8ëäËÕè1
+java:S6813j"BRemove this field injection and use constructor injection instead.(êæÄŞ8İ‚ïöé1
 \
-java:S1155£">Use isEmpty() to check whether the collection is empty or not.(»…úç8òäËÕè1
+java:S1155Í">Use isEmpty() to check whether the collection is empty or not.(»…úç8ç‚ïöé1
 P
-java:S1135¶"2Complete the task associated to this TODO comment.(²¾¼ğ8óäËÕè1
+java:S1135à"2Complete the task associated to this TODO comment.(²¾¼ğ8è‚ïöé1
 a
-java:S1155Ğ">Use isEmpty() to check whether the collection is empty or not.(¿ê”‘ıÿÿÿÿ8õäËÕè1
+java:S1155û">Use isEmpty() to check whether the collection is empty or not.(¿ê”‘ıÿÿÿÿ8ê‚ïöé1
 \
-java:S1155">Use isEmpty() to check whether the collection is empty or not.(ãÔÕŞ8÷äËÕè1
-U
-java:S1135÷"2Complete the task associated to this TODO comment.(ı³Í„üÿÿÿÿ8şäËÕè1
+java:S1155½">Use isEmpty() to check whether the collection is empty or not.(ãÔÕŞ8ë‚ïöé1
+p
+java:S3776ò"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(“–ış8ğ‚ïöé1
+P
+java:S1135‘"2Complete the task associated to this TODO comment.(«÷›ã8ó‚ïöé1
+C
+java:S1068a"&Remove this unused "UP" private field.(ü€Ö8ú‚ïöé1

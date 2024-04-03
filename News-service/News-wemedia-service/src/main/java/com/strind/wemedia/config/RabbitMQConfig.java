@@ -31,5 +31,16 @@ public class RabbitMQConfig {
         return BindingBuilder.bind(noListenQueue()).to(simpleExchange()).with(RabbitMQConstants.DEATH_MESSAGE);
     }
 
+    @Bean
+    public Queue downOrUpQueue(){
+        return QueueBuilder.durable(RabbitMQConstants.DOWN_OR_UP)
+            .build();
+    }
+
+    @Bean
+    public Binding downOrUpBinding(){
+        return BindingBuilder.bind(downOrUpQueue()).to(simpleExchange()).with(RabbitMQConstants.DOWN_OR_UP_MESSAGE);
+    }
+
 
 }

@@ -21,9 +21,15 @@ public class RabbitMQConstants {
 
     // rount key
     public static final String DEATH_MESSAGE = "deathMessage";
+    public static final String DOWN_OR_UP_MESSAGE = "downOrUpMessage";
 
 
     // 队列名字
+
+    /**
+     * 通知文章上下架的队列
+     */
+    public static final String DOWN_OR_UP = "downOrUpQueue";
 
     /**
      * 无人监听的队列
@@ -35,4 +41,8 @@ public class RabbitMQConstants {
      */
     public static final String DELAY_QUEUE = "delayQueue";
 
+    /**
+     * 延迟时间间隔 , 12小时后发表的
+     */
+    public static Integer DELAY_TIME = 1000 * 60 * 60 * 12;
 }

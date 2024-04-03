@@ -8,7 +8,19 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>autoscan-service</artifactId>
+    <artifactId>xxlJob-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-job-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.strind</groupId>
+            <artifactId>News-dubbo</artifactId>
+        </dependency>
+
+    </dependencies>
 </project>

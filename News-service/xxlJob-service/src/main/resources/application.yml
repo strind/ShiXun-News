@@ -1,0 +1,23 @@
+server:
+  port: 21500
+dubbo:
+  application:
+    name: article-service
+  protocol:
+    port: 20882
+  registry:
+    address: nacos://43.143.209.196:8848?username=nacos&password=nacos
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/leadnews-task?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 200339LHT
+xxl:
+  job:
+    admin:
+      address: http://123.57.165.115:7171/xxl-job-admin
+    executor:
+      appname: xxl-job-executor-ShiXun
+      port: 9999
+    accessToken: default_token

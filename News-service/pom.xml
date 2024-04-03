@@ -19,7 +19,7 @@
         <module>News-article-service</module>
         <module>News-user-service</module>
         <module>News-wemedia-service</module>
-        <module>autoscan-service</module>
+        <module>xxlJob-service</module>
     </modules>
 
 

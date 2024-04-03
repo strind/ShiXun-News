@@ -14,6 +14,7 @@ E:\work_project\ShiXun_News\News-model\src\main\java\com\strind\model\common\Res
 E:\work_project\ShiXun_News\News-model\src\main\java\com\strind\model\article\pojos\AppArticleConfig.java
 E:\work_project\ShiXun_News\News-model\src\main\java\com\strind\model\common\enums\AppHttpCodeEnum.java
 E:\work_project\ShiXun_News\News-model\src\main\java\com\strind\model\article\dtos\ArticleDto.java
+E:\work_project\ShiXun_News\News-model\src\main\java\com\strind\model\task\pojos\CommonTask.java
 E:\work_project\ShiXun_News\News-model\src\main\java\com\strind\model\common\dtos\PageResponseResult.java
 E:\work_project\ShiXun_News\News-model\src\main\java\com\strind\model\user\pojos\AppUser.java
 E:\work_project\ShiXun_News\News-model\src\main\java\com\strind\model\article\dtos\ArticleInfoDto.java

@@ -4,9 +4,9 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 123.57.165.115:8848
+        server-addr: 43.143.209.196:8848
       config:
-        server-addr: 123.57.165.115:8848
+        server-addr: 43.143.209.196:8848
         file-extension: yml
         prefix: article-service
       username: nacos
@@ -16,4 +16,4 @@ dubbo:
   scan:
     base-packages: com.strind.dubbo
   registry:
-    address: nacos://123.57.165.115:8848?username=nacos&password=nacos
+    address: nacos://43.143.209.196:8848?username=nacos&password=nacos

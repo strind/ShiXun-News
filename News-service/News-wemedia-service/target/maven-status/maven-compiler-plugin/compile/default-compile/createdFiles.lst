@@ -6,6 +6,7 @@ com\strind\wemedia\service\WmUserService.class
 com\strind\wemedia\service\impl\WmChannelServiceImpl.class
 com\strind\wemedia\config\RabbitMQConfig.class
 com\strind\wemedia\service\WmNewsService.class
+com\strind\wemedia\dubbo\PublishNewsService.class
 com\strind\wemedia\controller\WmNewsController.class
 com\strind\wemedia\mapper\WmMaterialMapper.class
 com\strind\wemedia\mapper\WmUserMapper.class
