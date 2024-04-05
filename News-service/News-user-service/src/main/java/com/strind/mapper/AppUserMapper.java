@@ -13,4 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface AppUserMapper extends BaseMapper<AppUser> {
 
+    String getName(Integer id);
+
 }

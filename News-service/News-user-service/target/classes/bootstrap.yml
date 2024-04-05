@@ -10,6 +10,6 @@ spring:
       config:
         server-addr: 43.143.209.196:8848
         file-extension: yml
-        prefix: user-service
+#        prefix: user-service
         username: nacos
         password: nacos

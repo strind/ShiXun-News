@@ -20,6 +20,7 @@
         <module>News-user-service</module>
         <module>News-wemedia-service</module>
         <module>xxlJob-service</module>
+        <module>News-behavior-service</module>
     </modules>
 
 

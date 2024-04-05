@@ -2,6 +2,15 @@
 spring:
   profiles:
     active: dev
+
+  freemarker:
+    cache: false
+    settings:
+      template_update_delay: 0
+      classic_compatible: true
+    suffix: .ftl
+    template-loader-path: classpath:/templates/
+
   #  数据库
   datasource:
     driver-class-name: com.mysql.jdbc.Driver

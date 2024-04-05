@@ -1,10 +1,10 @@
 server:
-  port: 21500
+  port: 15000
 dubbo:
   application:
-    name: article-service
+    name: wemedia-service
   protocol:
-    port: 20882
+    port: 20885
   registry:
     address: nacos://43.143.209.196:8848?username=nacos&password=nacos
 spring:

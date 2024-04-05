@@ -1,5 +1,6 @@
 package com.strind.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.strind.common.ProtostuffUtil;
@@ -14,6 +15,7 @@ import com.strind.model.common.RespResult;
 import com.strind.model.common.enums.AppHttpCodeEnum;
 import com.strind.rabbitmq.RabbitMQConstants;
 import com.strind.service.AppArticleService;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -104,17 +106,24 @@ public class AppArticleServiceImpl extends ServiceImpl<AppArticleMapper, AppArti
     }
 
     // TODO: 2024/4/2 监听队列，更改文章的上下架状态
-    @RabbitListener(queues = RabbitMQConstants.SINGLE_EXCHANGE)
-    public void downOrUpListener(byte[] data){
-        Map<String, String> map = ProtostuffUtil.deserialize(data, Map.class);
-        Long articleId = Long.valueOf(map.get("articleId"));
-        Short type = Short.valueOf(map.get("type"));
-        AppArticleConfig appArticleConfig = new AppArticleConfig();
-        appArticleConfig.setArticleId(articleId);
-        appArticleConfig.setIsDown(Short.valueOf("0").equals(type));
-        // 更新article的配置文件
-        appArticleConfigMapper.update(appArticleConfig, Wrappers.<AppArticleConfig>lambdaUpdate()
-            .eq(AppArticleConfig::getArticleId, appArticleConfig.getArticleId()));
+    @RabbitListener(queues = RabbitMQConstants.DOWN_OR_UP)
+    public void downOrUpListener(Message message){
+        if (message == null){
+            return;
+        }
+        byte[] body = message.getBody();
+        String str = ProtostuffUtil.deserialize(body, String.class);
+        Map<String,String> map = JSON.parseObject(str, Map.class);
+        if (map != null && !map.isEmpty()){
+            Long articleId = Long.valueOf(map.get("articleId"));
+            Short type = Short.valueOf(map.get("type"));
+            AppArticleConfig appArticleConfig = new AppArticleConfig();
+            appArticleConfig.setArticleId(articleId);
+            appArticleConfig.setIsDown(Short.valueOf("0").equals(type));
+            // 更新article的配置文件
+            appArticleConfigMapper.update(appArticleConfig, Wrappers.<AppArticleConfig>lambdaUpdate()
+                .eq(AppArticleConfig::getArticleId, appArticleConfig.getArticleId()));
+        }
     }
 
 

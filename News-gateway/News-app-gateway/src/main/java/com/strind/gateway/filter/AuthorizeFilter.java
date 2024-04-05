@@ -36,8 +36,6 @@ public class AuthorizeFilter implements GlobalFilter {
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpResponse response = exchange.getResponse();
 
-        log.info("url: {}",request.getURI());
-
         // 判断是否是登录
         if (request.getURI().getPath().contains("/login")) {
             // 放行
@@ -45,11 +43,13 @@ public class AuthorizeFilter implements GlobalFilter {
         }
 
         // 获取token
-        String token = request.getHeaders().getFirst("token");
+        String token = request.getHeaders().getFirst("Token");
         if (StringUtils.isBlank(token)){
             response.setStatusCode(HttpStatus.UNAUTHORIZED);
             return response.setComplete();
         }
+
+        log.info("以获得token {}", token);
 
         // 判断token是否有效
         try {

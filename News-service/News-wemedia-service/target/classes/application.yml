@@ -27,7 +27,7 @@ tess4j:
 #  dubbo 消费端配置
 dubbo:
   application:
-    name: article-service
+    name: wemedia-service
   registry:
     address: nacos://43.143.209.196:8848?username=nacos&password=nacos
   protocol:

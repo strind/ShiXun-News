@@ -2,18 +2,27 @@
 spring:
   profiles:
     active: dev
+
+  freemarker:
+    cache: false
+    settings:
+      template_update_delay: 0
+      classic_compatible: true
+    suffix: .ftl
+    template-loader-path: classpath:/templates/
+
   #  数据库
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/leadnews_article?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: 200339LHT
-#  rabbitmq:
-#    host: 123.57.165.115
-#    port: 5672
-#    virtual-host: shiXun
-#    username: temp
-#    password: 123321
+  rabbitmq:
+    host: 123.57.165.115
+    port: 5672
+    virtual-host: shiXun
+    username: temp
+    password: 123321
 server:
   port: 13000
 minio:

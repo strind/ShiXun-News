@@ -21,6 +21,5 @@
             <groupId>com.strind</groupId>
             <artifactId>News-dubbo</artifactId>
         </dependency>
-
     </dependencies>
 </project>

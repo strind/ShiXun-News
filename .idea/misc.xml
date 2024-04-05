@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
@@ -28,6 +29,7 @@
         <option value="$PROJECT_DIR$/News-basic/News-file-starter/pom.xml" />
         <option value="$PROJECT_DIR$/News-service/News-autoscan-service/pom.xml" />
         <option value="$PROJECT_DIR$/News-service/autoscan-service/pom.xml" />
+        <option value="$PROJECT_DIR$/News-service/News-behabior/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

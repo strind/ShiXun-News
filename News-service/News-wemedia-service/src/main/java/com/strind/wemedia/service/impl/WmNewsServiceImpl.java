@@ -10,6 +10,7 @@ import com.strind.client.Tess4jClient;
 import com.strind.common.ProtostuffUtil;
 import com.strind.common.SensitiveWordUtil;
 import com.strind.commonInterface.AddTask;
+import com.strind.commonInterface.RemoveTask;
 import com.strind.commonInterface.SaveArticle;
 import com.strind.constants.CommonTaskTypeConstants;
 import com.strind.constants.WmNewsConstants;
@@ -97,11 +98,14 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
     private static final Short UP = 1;
 
 
-    @DubboReference
+    @DubboReference(check = false)
     private SaveArticle saveArticle;
 
     @DubboReference(check = false)
     private AddTask addTask;
+
+    @DubboReference(check = false)
+    private RemoveTask removeTask;
 
     @Autowired
     private WmNewsMapper wmNewsMapper;
@@ -118,7 +122,7 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
             return RespResult.errorResult(AppHttpCodeEnum.PARAM_INVALID);
         }
         // 更改本地的文章消息
-        if (dto.getStatus().equals(WmNewsServiceImpl.DOWN)){
+        if (dto.getEnable().equals(WmNewsServiceImpl.DOWN)){
             // 下架，更新本地库
             WmNews wmNews = new WmNews();
             wmNews.setId(dto.getId());
@@ -129,8 +133,9 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
             Map<String,String> map = new HashMap<>();
             map.put("articleId",articleId.toString());
             map.put("type",dto.getEnable().toString());
+            Message message = MessageBuilder.withBody(ProtostuffUtil.serialize(JSON.toJSONString(map))).build();
             rabbitTemplate.convertAndSend(RabbitMQConstants.SINGLE_EXCHANGE,
-                RabbitMQConstants.DOWN_OR_UP_MESSAGE,ProtostuffUtil.serialize(map));
+                RabbitMQConstants.DOWN_OR_UP_MESSAGE,message);
         }
         return null;
     }
@@ -301,12 +306,17 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
         if (id == null){
             throw new CustomException(AppHttpCodeEnum.PARAM_INVALID);
         }
+        WmNews wmNews = wmNewsMapper.selectById(id);
+        if (wmNews.getStatus().equals(WmNews.Status.PUBLISHED.getCode())){
+            // 文章已发布，无法删除
+            throw new CustomException(AppHttpCodeEnum.DATA_HAS_EXPIRED);
+        }
         // 先删除关系
         wmNewsMaterialMapper.delete(Wrappers.<WmNewsMaterial>lambdaQuery().eq(WmNewsMaterial::getNewsId,id));
         // 是否存在任务
-        WmNews wmNews = wmNewsMapper.selectById(id);
         if (wmNews.getPublishTime().getTime() - wmNews.getCreatedTime().getTime() > RabbitMQConstants.DELAY_TIME){
-            // 间隔大于 12 小时，有任务，要进行删除
+            // TODO: 2024/4/3  间隔大于 12 小时，有任务，要进行删除
+            removeTask.removeTask(wmNews.getId());
         }
         // 在删除文章
         removeById(id);
@@ -437,8 +447,11 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
                         map.put("id",wmNews.getId().toString());
                         map.put("status", String.valueOf(WmNews.Status.PUBLISHED.getCode()));
                         CommonTask task = CommonTask.builder()
-                            .param(JSON.toJSONString(map)).type(CommonTaskTypeConstants.UPDATE_NEWS)
+                            .param(JSON.toJSONString(map))
+                            .newsId(wmNews.getId())
+                            .type(CommonTaskTypeConstants.UPDATE_NEWS)
                             .createTime(new Date()).pullTime(wmNews.getPublishTime()).build();
+                        // TODO: 2024/4/3 有bug,服务提供者未找到
                         addTask.addTask(task);
                         log.info("文章 {} 的审核正式结束", wmNews.getId());
                     }
@@ -488,8 +501,8 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
         log.info("接收到队列中的消息");
         Integer id = ProtostuffUtil.deserialize(data, Integer.class);
         WmNews wmNews = wmNewsMapper.selectById(id);
-        if (wmNews != null){
-            // 文章可能被删除
+        if (wmNews != null && !wmNews.getStatus().equals(WmNews.Status.PUBLISHED.getCode())){
+            // 文章没有被删除，且未发表
             savaOrUpdateArticle(wmNews);
         }
     }

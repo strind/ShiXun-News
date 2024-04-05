@@ -1,51 +1,55 @@
 
 M
-java:S3740•"/Provide the parametrized type for this generic.(þŒ•8¤‚ïöé1
+java:S3740š"/Provide the parametrized type for this generic.(þŒ•8Ý©É¡ê1
 M
-java:S3740•"/Provide the parametrized type for this generic.(þŒ•8¤‚ïöé1
+java:S3740š"/Provide the parametrized type for this generic.(þŒ•8Þ©É¡ê1
 M
-java:S3740´"/Provide the parametrized type for this generic.(„î¢¥8¤‚ïöé1
+java:S3740¹"/Provide the parametrized type for this generic.(„î¢¥8ß©É¡ê1
 M
-java:S3740Ê"/Provide the parametrized type for this generic.(¿•Ê†8¤‚ïöé1
+java:S3740Ô"/Provide the parametrized type for this generic.(¿•Ê†8á©É¡ê1
 M
-java:S3740Ë"/Provide the parametrized type for this generic.(©çÔÐ8¥‚ïöé1
+java:S3740Õ"/Provide the parametrized type for this generic.(©çÔÐ8ã©É¡ê1
 M
-java:S3740È"/Provide the parametrized type for this generic.(š‰ÔÉ8¥‚ïöé1
+java:S3740Õ"/Provide the parametrized type for this generic.(š‰ÔÉ8ä©É¡ê1
 M
-java:S3740É"/Provide the parametrized type for this generic.(©çÔÐ8¥‚ïöé1
+java:S3740Ö"/Provide the parametrized type for this generic.(©çÔÐ8æ©É¡ê1
 d
-java:S1192Í"FDefine a constant instead of duplicating this literal "value" 3 times.(íØíŠ8¥‚ïöé1
+java:S1192×"FDefine a constant instead of duplicating this literal "value" 3 times.(íØíŠ8ì©É¡ê1
 ƒ
-java:S1192¨"`Define a constant instead of duplicating this literal "æ–‡ç«  {} çš„å®¡æ ¸æ­£å¼ç»“æŸ" 3 times.(ª˜ŠÉúÿÿÿÿ8¥‚ïöé1
+java:S1192²"`Define a constant instead of duplicating this literal "æ–‡ç«  {} çš„å®¡æ ¸æ­£å¼ç»“æŸ" 3 times.(ª˜ŠÉúÿÿÿÿ8ó©É¡ê1
 _
-java:S6813H"BRemove this field injection and use constructor injection instead.(êæÄÞ8Ý‚ïöé1
+java:S6813I"BRemove this field injection and use constructor injection instead.(êæÄÞ8³ªÉ¡ê1
 _
-java:S6813K"BRemove this field injection and use constructor injection instead.(êæÄÞ8Ý‚ïöé1
+java:S6813L"BRemove this field injection and use constructor injection instead.(êæÄÞ8µªÉ¡ê1
 _
-java:S6813N"BRemove this field injection and use constructor injection instead.(êæÄÞ8Ý‚ïöé1
+java:S6813O"BRemove this field injection and use constructor injection instead.(êæÄÞ8¶ªÉ¡ê1
 _
-java:S6813Q"BRemove this field injection and use constructor injection instead.(êæÄÞ8Ý‚ïöé1
+java:S6813R"BRemove this field injection and use constructor injection instead.(êæÄÞ8·ªÉ¡ê1
 _
-java:S6813T"BRemove this field injection and use constructor injection instead.(êæÄÞ8Ý‚ïöé1
+java:S6813U"BRemove this field injection and use constructor injection instead.(êæÄÞ8¹ªÉ¡ê1
 _
-java:S6813W"BRemove this field injection and use constructor injection instead.(êæÄÞ8Ý‚ïöé1
+java:S6813X"BRemove this field injection and use constructor injection instead.(êæÄÞ8ºªÉ¡ê1
 _
-java:S6813Z"BRemove this field injection and use constructor injection instead.(êæÄÞ8Ý‚ïöé1
+java:S6813["BRemove this field injection and use constructor injection instead.(êæÄÞ8»ªÉ¡ê1
 _
-java:S6813]"BRemove this field injection and use constructor injection instead.(êæÄÞ8Ý‚ïöé1
+java:S6813^"BRemove this field injection and use constructor injection instead.(êæÄÞ8½ªÉ¡ê1
 _
-java:S6813j"BRemove this field injection and use constructor injection instead.(êæÄÞ8Ý‚ïöé1
+java:S6813n"BRemove this field injection and use constructor injection instead.(êæÄÞ8½ªÉ¡ê1
 \
-java:S1155Í">Use isEmpty() to check whether the collection is empty or not.(»…úç8ç‚ïöé1
+java:S1155Ò">Use isEmpty() to check whether the collection is empty or not.(»…úç8ÌªÉ¡ê1
 P
-java:S1135à"2Complete the task associated to this TODO comment.(²¾¼ð8è‚ïöé1
+java:S1135å"2Complete the task associated to this TODO comment.(²¾¼ð8ÎªÉ¡ê1
 a
-java:S1155û">Use isEmpty() to check whether the collection is empty or not.(¿ê”‘ýÿÿÿÿ8ê‚ïöé1
-\
-java:S1155½">Use isEmpty() to check whether the collection is empty or not.(ãÔÕÞ8ë‚ïöé1
-p
-java:S3776ò"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(“–ýþ8ð‚ïöé1
+java:S1155€">Use isEmpty() to check whether the collection is empty or not.(¿ê”‘ýÿÿÿÿ8ÑªÉ¡ê1
 P
-java:S1135‘"2Complete the task associated to this TODO comment.(«÷›ã8ó‚ïöé1
+java:S1135¾"2Complete the task associated to this TODO comment.(Œ¹³8ÕªÉ¡ê1
+\
+java:S1155Ç">Use isEmpty() to check whether the collection is empty or not.(ãÔÕÞ8×ªÉ¡ê1
+p
+java:S3776ü"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(“–ýþ8àªÉ¡ê1
+P
+java:S1135›"2Complete the task associated to this TODO comment.(«÷›ã8ãªÉ¡ê1
+U
+java:S1135Æ"2Complete the task associated to this TODO comment.(ÞÓ§Ùøÿÿÿÿ8éªÉ¡ê1
 C
-java:S1068a"&Remove this unused "UP" private field.(üŽ€Ö8ú‚ïöé1
+java:S1068b"&Remove this unused "UP" private field.(üŽ€Ö8òªÉ¡ê1

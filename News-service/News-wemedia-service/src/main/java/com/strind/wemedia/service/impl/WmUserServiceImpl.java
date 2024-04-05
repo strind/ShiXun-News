@@ -3,6 +3,8 @@ package com.strind.wemedia.service.impl;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.strind.common.AppJwtUtil;
+import com.strind.commonInterface.AddAuthor;
+import com.strind.model.article.pojos.AppAuthor;
 import com.strind.model.common.RespResult;
 import com.strind.model.common.enums.AppHttpCodeEnum;
 import com.strind.model.wemedia.dtos.WmLoginDto;
@@ -10,11 +12,17 @@ import com.strind.model.wemedia.pojos.WmUser;
 import com.strind.wemedia.mapper.WmUserMapper;
 import com.strind.wemedia.service.WmUserService;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.dubbo.config.annotation.DubboReference;
+import org.apache.dubbo.config.annotation.DubboService;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author strind
@@ -24,6 +32,12 @@ import java.util.Map;
  */
 @Service
 public class WmUserServiceImpl extends ServiceImpl<WmUserMapper, WmUser> implements WmUserService {
+
+    @Autowired
+    private WmUserMapper wmUserMapper;
+
+    @DubboReference
+    private AddAuthor addAuthor;
 
     /**
      * 用户登录
@@ -41,7 +55,31 @@ public class WmUserServiceImpl extends ServiceImpl<WmUserMapper, WmUser> impleme
         //2.查询用户
         WmUser wmUser = getOne(Wrappers.<WmUser>lambdaQuery().eq(WmUser::getName, dto.getName()));
         if(wmUser == null){
-            return RespResult.errorResult(AppHttpCodeEnum.DATA_NOT_EXIST);
+            // 创建用户
+            wmUser = new WmUser();
+            wmUser.setName(dto.getName());
+            String salt = UUID.randomUUID().toString().replace("-", "");
+            wmUser.setSalt(salt);
+            wmUser.setPassword(DigestUtils.md5DigestAsHex((salt + dto.getPassword()).getBytes()));
+            wmUser.setStatus(1);
+            wmUser.setCreatedTime(new Date());
+            wmUserMapper.insert(wmUser); // 创建一个新用户
+            // 创建作者 消息
+            AppAuthor appAuthor = new AppAuthor();
+            appAuthor.setWmUserId(wmUser.getId());
+            appAuthor.setType((short) 2);
+            appAuthor.setName(wmUser.getName());
+            appAuthor.setCreatedTime(new Date());
+            Integer authorId = addAuthor.addAuthor(appAuthor);
+            wmUser.setApAuthorId(authorId);
+            // 更新作者id
+            wmUserMapper.update(wmUser,Wrappers.<WmUser>lambdaUpdate().eq(WmUser::getId, wmUser.getId()));
+            Map<String,Object> map  = new HashMap<>();
+            map.put("token", AppJwtUtil.getToken(wmUser.getId().longValue()));
+            wmUser.setSalt("");
+            wmUser.setPassword("");
+            map.put("user",wmUser);
+            return RespResult.okResult(map);
         }
 
         //3.比对密码

@@ -2,33 +2,5 @@
 spring:
   application:
     name: News-app-gateway
-  cloud:
-    gateway:
-      globalcors:
-        add-to-simple-url-handler-mapping: true
-        corsConfigurations:
-          '[/**]':
-            allowedHeaders: "*"
-            allowedOrigins: "*"
-            allowedMethods:
-              - GET
-              - POST
-              - DELETE
-              - PUT
-              - OPTION
-      routes:
-        - id: user-service
-          uri: lb://user-service
-          predicates:
-            - Path=/user/**
-          filters:
-            # 跳过一个路径前缀
-            - StripPrefix=1
-        - id: article-service
-          uri: lb://article-service
-          predicates:
-            - Path=/article/**
-          filters:
-            - StripPrefix=1
 server:
   port: 21300

@@ -10,3 +10,31 @@ spring:
         file-extension: yml
         username: nacos
         password: nacos
+
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedHeaders: "*"
+            allowedOriginPatterns: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTION
+        add-to-simple-url-handler-mapping: true
+      routes:
+        - id: user-server
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+          filters:
+            # 跳过一个路径前缀
+            - StripPrefix=1
+        - id: article-server
+          uri: lb://article-service
+          predicates:
+            - Path=/article/**
+          filters:
+            - StripPrefix=1

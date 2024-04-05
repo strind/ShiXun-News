@@ -4,5 +4,6 @@ com\strind\constants\WmmediaConstants.class
 com\strind\constants\WmNewsConstants.class
 com\strind\constants\CommonTaskTypeConstants.class
 META-INF\spring-configuration-metadata.json
+com\strind\constants\UserBehaviorConstants.class
 com\strind\exception\CustomException.class
 com\strind\client\Tess4jClient.class
