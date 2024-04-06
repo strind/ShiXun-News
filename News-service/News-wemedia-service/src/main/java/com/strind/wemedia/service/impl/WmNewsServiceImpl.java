@@ -27,6 +27,7 @@ import com.strind.model.wemedia.dtos.WmNewsPageDto;
 import com.strind.model.wemedia.pojos.WmMaterial;
 import com.strind.model.wemedia.pojos.WmNews;
 import com.strind.model.wemedia.pojos.WmNewsMaterial;
+import com.strind.model.wemedia.pojos.WmNewsStatistics;
 import com.strind.rabbitmq.RabbitMQConstants;
 import com.strind.thread.WmmediaThreadLocalUtil;
 import com.strind.wemedia.mapper.*;
@@ -106,6 +107,9 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
 
     @DubboReference(check = false)
     private RemoveTask removeTask;
+
+    @Autowired
+    private WmNewsStatisticsMapper wmNewsStatisticsMapper;
 
     @Autowired
     private WmNewsMapper wmNewsMapper;
@@ -318,6 +322,13 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
             // TODO: 2024/4/3  间隔大于 12 小时，有任务，要进行删除
             removeTask.removeTask(wmNews.getId());
         }
+        // 删除文章的数据
+        Long articleId = wmNews.getArticleId();
+        if (articleId != null){
+            wmNewsStatisticsMapper.delete(Wrappers.<WmNewsStatistics>lambdaQuery()
+                .eq(WmNewsStatistics::getUserId,wmNews.getUserId())
+                .eq(WmNewsStatistics::getArticleId,articleId));
+        }
         // 在删除文章
         removeById(id);
         return RespResult.okResult(AppHttpCodeEnum.SUCCESS);
@@ -423,6 +434,7 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
                             log.error("图片审核过程含有异常：{}", image);
                         }
                     }
+
                     // 判断是否发布
                     long currentTime = new Date().getTime();
                     if (publishTime <= currentTime){
@@ -525,6 +537,17 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
             log.info("调用远程服务，保存文章");
             Long articleId = saveArticle.saveArticle(appArticle);
             wmNews.setArticleId(articleId);
+            // 保存数据表
+            WmNewsStatistics statistics = WmNewsStatistics.builder()
+                .userId(wmNews.getId())
+                .articleId(articleId)
+                .createdTime(new Date())
+                .readCount(0).comment(0)
+                .follow(0).collection(0)
+                .forward(0).likes(0)
+                .unlikes(0).unFollow(0).build();
+            wmNewsStatisticsMapper.insert(statistics);
+
         }
         wmNews.setStatus(WmNews.Status.PUBLISHED.getCode());
         update(wmNews,Wrappers.<WmNews>lambdaUpdate().eq(WmNews::getId, wmNews.getId()));

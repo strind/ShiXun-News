@@ -25,6 +25,7 @@ public class CorsConfig {
         config.addAllowedOriginPattern("*");
         //允许所有的请求头
         config.addAllowedHeader("*");
+        config.setAllowCredentials(Boolean.TRUE);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(new PathPatternParser());
         source.registerCorsConfiguration("/**", config);//针对所有的请求都支持跨域
         return new CorsWebFilter(source);

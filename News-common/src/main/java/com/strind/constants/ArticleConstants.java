@@ -1,7 +1,5 @@
 package com.strind.constants;
 
-import org.apache.directory.shared.kerberos.codec.adKdcIssued.actions.StoreIRealm;
-
 /**
  * @author strind
  * @version 1.0

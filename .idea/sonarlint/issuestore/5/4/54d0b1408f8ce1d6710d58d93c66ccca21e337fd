@@ -1,7 +1,0 @@
-
-W
-java:S1191"5Use classes from the Java API instead of Sun classes.(Ó¨Ôÿÿÿÿÿ8Ğ¹¼úå1
-U
-java:S1118":Add a private constructor to hide the implicit public one.(ö¯çøÿÿÿÿ
-<
-java:S1168"&Return an empty array instead of null.(¥¹ï

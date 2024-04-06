@@ -29,7 +29,6 @@ public class WmNewsController {
 
     @PostMapping("/submit")
     public RespResult submit(@RequestBody WmNewsDto dto){
-        log.info("开始处理提交文章");
         return wmNewsService.submit(dto);
     }
 

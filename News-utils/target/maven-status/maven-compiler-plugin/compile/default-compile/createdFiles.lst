@@ -1,5 +1,4 @@
 com\strind\common\SimHashUtils.class
-com\strind\common\Base64Utils.class
 com\strind\common\IdsUtils.class
 com\strind\common\SensitiveWordUtil.class
 com\strind\common\ProtostuffUtil.class
@@ -8,7 +7,6 @@ com\strind\common\MD5Utils.class
 com\strind\common\SnowflakeIdWorker.class
 com\strind\common\UrlSignUtils.class
 com\strind\common\BurstUtils.class
-com\strind\common\ZipUtils.class
 com\strind\thread\AppThreadLocalUtil.class
 com\strind\common\BCrypt.class
 com\strind\common\Compute.class

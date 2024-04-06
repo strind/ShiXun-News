@@ -2,7 +2,9 @@ com\strind\config\WebMvcConfig.class
 com\strind\controller\ArticleHomeController.class
 com\strind\ArticleApplication.class
 com\strind\mapper\AppArticleMapper.class
+com\strind\mapper\AppAuthorMapper.class
 com\strind\mapper\AppArticleContentMapper.class
+com\strind\dubbo\AuthorService.class
 com\strind\mapper\AppArticleConfigMapper.class
 com\strind\service\impl\AppArticleServiceImpl.class
 com\strind\controller\ArticleInfoController.class

@@ -17,6 +17,7 @@ com\strind\wemedia\service\impl\WmUserServiceImpl.class
 com\strind\wemedia\mapper\WmNewsMapper.class
 com\strind\wemedia\mapper\WmSensitiveMapper.class
 com\strind\wemedia\WemediaApplication.class
+com\strind\wemedia\mapper\WmNewsStatisticsMapper.class
 com\strind\wemedia\mapper\WmNewsMaterialMapper.class
 com\strind\wemedia\interceptor\WemediaTokenInterceptor.class
 com\strind\wemedia\mapper\WmChannelMapper.class

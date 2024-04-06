@@ -1,4 +1,5 @@
 com\strind\commonInterface\AddTask.class
 com\strind\commonInterface\SaveArticle.class
+com\strind\commonInterface\AddAuthor.class
 com\strind\commonInterface\RemoveTask.class
 com\strind\commonInterface\PublishNews.class

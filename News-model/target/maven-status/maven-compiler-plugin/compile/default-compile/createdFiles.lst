@@ -4,8 +4,11 @@ com\strind\model\wemedia\pojos\WmMaterial.class
 com\strind\model\wemedia\dtos\WmLoginDto.class
 com\strind\model\user\pojos\AppUserFan$AppUserFanBuilder.class
 com\strind\model\wemedia\pojos\WmSensitive.class
+com\strind\model\behavior\pojos\BehaviorStatistics$BehaviorStatisticsBuilder.class
 com\strind\model\wemedia\pojos\WmNews$Status.class
 com\strind\model\common\dtos\PageResponseResult.class
+com\strind\model\article\dtos\ArticleLikesDto.class
+com\strind\model\wemedia\pojos\WmNewsStatistics.class
 com\strind\model\common\dtos\PageRequestDto.class
 com\strind\model\user\pojos\AppUserFan.class
 com\strind\model\user\pojos\AppUserFollow.class
@@ -14,6 +17,7 @@ com\strind\model\wemedia\dtos\WmNewsDto.class
 com\strind\model\article\pojos\AppArticleContent.class
 com\strind\model\article\dtos\ArticleHomeDto.class
 com\strind\model\wemedia\dtos\WmNewsPageDto.class
+com\strind\model\wemedia\pojos\WmNewsStatistics$WmNewsStatisticsBuilder.class
 com\strind\model\user\pojos\AppUserFollow$AppUserFollowBuilder.class
 com\strind\model\wemedia\pojos\WmChannel.class
 com\strind\model\wemedia\pojos\WmUser.class
@@ -21,6 +25,8 @@ com\strind\model\task\pojos\CommonTask.class
 com\strind\model\user\dtos\LoginDto.class
 com\strind\model\user\dtos\UserRelationDto.class
 com\strind\model\wemedia\pojos\WmNewsMaterial.class
+com\strind\model\article\pojos\AppAuthor.class
+com\strind\model\behavior\pojos\BehaviorStatistics.class
 com\strind\model\article\dtos\ArticleDto.class
 com\strind\model\article\pojos\AppArticleConfig.class
 com\strind\model\wemedia\dtos\WmMaterialDto.class

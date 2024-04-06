@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.strind.client.Tess4jClient
+com.strind.client.Tess4jClient,\
+com.strind.redis.CacheService

@@ -1,9 +1,13 @@
-com\strind\constants\ArticleConstants.class
 com\strind\rabbitmq\RabbitMQConstants.class
 com\strind\constants\WmmediaConstants.class
+com\strind\redis\CacheService$2.class
+META-INF\spring-configuration-metadata.json
+com\strind\client\Tess4jClient.class
+com\strind\redis\RedisConstants.class
+com\strind\redis\CacheService$1.class
+com\strind\constants\ArticleConstants.class
+com\strind\redis\CacheService.class
 com\strind\constants\WmNewsConstants.class
 com\strind\constants\CommonTaskTypeConstants.class
-META-INF\spring-configuration-metadata.json
 com\strind\constants\UserBehaviorConstants.class
 com\strind\exception\CustomException.class
-com\strind\client\Tess4jClient.class

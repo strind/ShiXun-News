@@ -49,7 +49,6 @@ public class AuthorizeFilter implements GlobalFilter {
             return response.setComplete();
         }
 
-        log.info("以获得token {}", token);
 
         // 判断token是否有效
         try {

@@ -1,6 +1,5 @@
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\UrlSignUtils.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\thread\AppThreadLocalUtil.java
-E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\Base64Utils.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\SensitiveWordUtil.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\MD5Utils.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\DateUtils.java
@@ -12,7 +11,6 @@ E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\ReflectUt
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\Compute.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\AppJwtUtil.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\DESUtils.java
-E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\ZipUtils.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\ProtostuffUtil.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\FileUtils.java
 E:\work_project\ShiXun_News\News-utils\src\main\java\com\strind\common\BurstUtils.java

@@ -20,16 +20,12 @@
         <module name="News-file-starter" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="News-behabior" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="News-app-gateway" options="-parameters" />
       <module name="News-article-service" options="-parameters" />
       <module name="News-basic" options="-parameters" />
-      <module name="News-behabior" options="-parameters" />
       <module name="News-behavior-service" options="-parameters" />
       <module name="News-common" options="-parameters" />
       <module name="News-dubbo" options="-parameters" />
