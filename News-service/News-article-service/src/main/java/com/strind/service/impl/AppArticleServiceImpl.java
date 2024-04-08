@@ -3,27 +3,37 @@ package com.strind.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.google.errorprone.annotations.Var;
 import com.strind.common.ProtostuffUtil;
+import com.strind.commonInterface.article.UpdateArticleInfo;
+import com.strind.commonInterface.user.IsFan;
 import com.strind.constants.ArticleConstants;
+import com.strind.exception.CustomException;
+import com.strind.mapper.AppArticleCollectionMapper;
 import com.strind.mapper.AppArticleConfigMapper;
 import com.strind.mapper.AppArticleMapper;
+import com.strind.model.article.dtos.ArticleCollectionDto;
 import com.strind.model.article.dtos.ArticleHomeDto;
 import com.strind.model.article.dtos.ArticleInfoDto;
 import com.strind.model.article.pojos.AppArticle;
+import com.strind.model.article.pojos.AppArticleCollection;
 import com.strind.model.article.pojos.AppArticleConfig;
+import com.strind.model.article.vos.ArticleInfoVO;
 import com.strind.model.common.RespResult;
 import com.strind.model.common.enums.AppHttpCodeEnum;
 import com.strind.rabbitmq.RabbitMQConstants;
+import com.strind.redis.CacheService;
+import com.strind.redis.RedisConstants;
 import com.strind.service.AppArticleService;
+import com.strind.thread.AppThreadLocalUtil;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * @author strind
@@ -36,16 +46,31 @@ import java.util.Objects;
 public class AppArticleServiceImpl extends ServiceImpl<AppArticleMapper, AppArticle> implements AppArticleService {
 
     @Autowired
+    private CacheService cacheService;
+
+    @Autowired
     private AppArticleMapper appArticleMapper;
 
     @Autowired
     private AppArticleConfigMapper appArticleConfigMapper;
 
+    @Autowired
+    private AppArticleCollectionMapper appArticleCollectionMapper;
+
+    @DubboReference(check = false)
+    private IsFan isFan;
+
+    @DubboReference(check = false)
+    private UpdateArticleInfo updateArticleInfo;
+
+    private static final Short YES = 0;
+    private static final Short NO = 1;
+
     @Override
     public RespResult load(ArticleHomeDto dto, Short type) {
         checkOrInit(dto, type);
-
         List<AppArticle> appArticles = appArticleMapper.loadArticleList(dto,type);
+
         return RespResult.okResult(appArticles);
     }
 
@@ -71,7 +96,81 @@ public class AppArticleServiceImpl extends ServiceImpl<AppArticleMapper, AppArti
      */
     @Override
     public RespResult loadArticleInfo(ArticleInfoDto dto) {
-        return null;
+        // 校验参数
+        if (dto == null || dto.getArticleId() == null || dto.getAuthorId() == null){
+            throw new CustomException(AppHttpCodeEnum.PARAM_INVALID);
+        }
+        Integer userId = AppThreadLocalUtil.getUser().getId();
+        // TODO: 2024/4/6 暂且先通过redis组装结果
+        Short isLike = (short) (cacheService.sIsMember(RedisConstants.LIKE_ARTICLE_ + dto.getArticleId(),String.valueOf(userId)) ? 0 : 1);
+        Short isUnlike = (short) (cacheService.sIsMember(RedisConstants.UN_LIKE_ARTICLE + dto.getArticleId(),String.valueOf(userId)) ? 0 : 1);
+        Short isCollection = (short) (cacheService.sIsMember(RedisConstants.COLLECTION + dto.getArticleId(),String.valueOf(userId)) ? 0 : 1);
+        Short isf = (short) (isFan.isFan(userId,dto.getAuthorId()) ? 0 : 1);
+        ArticleInfoVO data = ArticleInfoVO.builder().islike(isLike)
+            .isfollow(isf).isunlike(isUnlike).iscollection(isCollection).build();
+        return RespResult.okResult(data);
+    }
+
+
+    /**
+     * 收藏，可能频繁操作，放入redis
+     *
+     * @param dto
+     * @return
+     */
+    @Override
+    public RespResult collection(ArticleCollectionDto dto) {
+        // 校验参数
+        if (dto == null || dto.getEntryId() == null || dto.getOperation() == null
+            || dto.getPublishedTime() == null || dto.getType() == null){
+            throw new CustomException(AppHttpCodeEnum.PARAM_INVALID);
+        }
+        Integer userId = AppThreadLocalUtil.getUser().getId();
+        if (YES.equals(dto.getOperation())){
+            // 收藏
+            Set<String> set = null;
+            if (cacheService.hExists(RedisConstants.COLLECTION,dto.getEntryId().toString())){
+                String o = (String) cacheService.hGet(RedisConstants.COLLECTION, dto.getEntryId().toString());
+                set = JSON.parseObject(o, Set.class);
+            }else {
+                set = new HashSet<>();
+            }
+            set.add(userId.toString());
+            cacheService.hPut(RedisConstants.COLLECTION, dto.getEntryId().toString(),JSON.toJSONString(set));
+        }else {
+            // 取消收藏
+            if (cacheService.hExists(RedisConstants.COLLECTION,dto.getEntryId().toString())){
+                // 在缓存中，未同步到数据库，直接删除即可
+                String o = (String) cacheService.hGet(RedisConstants.COLLECTION, dto.getEntryId().toString());
+                Set<String> set = JSON.parseObject(o, Set.class);
+                if (set.contains(userId.toString())){
+                    set.remove(userId.toString());
+                    cacheService.hPut(RedisConstants.COLLECTION, dto.getEntryId().toString(),JSON.toJSONString(set));
+                }else {
+                    // 从数据库删除
+                    AppArticleCollection collection = AppArticleCollection.builder()
+                        .userId(userId)
+                        .entryId(dto.getEntryId())
+                        .build();
+                    appArticleCollectionMapper.delete(Wrappers.<AppArticleCollection>lambdaQuery()
+                        .eq(AppArticleCollection::getUserId, collection.getUserId())
+                        .eq(AppArticleCollection::getEntryId, collection.getEntryId())
+                    );
+                }
+
+            }else {
+                // 从数据库删除
+                AppArticleCollection collection = AppArticleCollection.builder()
+                    .userId(userId)
+                    .entryId(dto.getEntryId())
+                    .build();
+                appArticleCollectionMapper.delete(Wrappers.<AppArticleCollection>lambdaQuery()
+                    .eq(AppArticleCollection::getUserId, collection.getUserId())
+                    .eq(AppArticleCollection::getEntryId, collection.getEntryId())
+                );
+            }
+        }
+        return RespResult.okResult("success");
     }
 
     /**
@@ -126,5 +225,35 @@ public class AppArticleServiceImpl extends ServiceImpl<AppArticleMapper, AppArti
         }
     }
 
+    /**
+     * 定时更新文章的收藏数量，及同步数据到数据库
+     */
+    @Scheduled(cron = "0 0/5 * * * ?")
+    public void refreshReadCount(){
+        Map<Object, Object> map = cacheService.hGetAll(RedisConstants.COLLECTION);
+        if (!map.isEmpty()){
+            List<AppArticle> list = new ArrayList<>();
+            for (Map.Entry<Object, Object> entry : map.entrySet()) {
+                Long articleId = (Long) entry.getKey();
+                Set<String> count = (Set<String>) entry.getValue();
+                AppArticle appArticle = new AppArticle();
+                appArticle.setId(articleId);
+                appArticle.setCollection(count.size());
+                list.add(appArticle);
+                cacheService.hDelete(RedisConstants.READ,articleId);
+                for (String user_id : count) {
+                    AppArticleCollection collection = AppArticleCollection.builder()
+                        .userId(Integer.valueOf(user_id))
+                        .entryId(articleId)
+                        .type(Short.valueOf("0"))
+                        .collectionTime(new Date())
+                        .publishedTime(new Date())
+                        .build();
+                   appArticleCollectionMapper.insert(collection);
+                }
+            }
+            updateArticleInfo.updateArticlesInfo(list, ArticleConstants.VIEWS_TYPE);
+        }
+    }
 
 }

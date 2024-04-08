@@ -1,6 +1,7 @@
 package com.strind.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.strind.model.article.dtos.ArticleCollectionDto;
 import com.strind.model.article.dtos.ArticleHomeDto;
 import com.strind.model.article.dtos.ArticleInfoDto;
 import com.strind.model.article.pojos.AppArticle;
@@ -43,4 +44,11 @@ public interface AppArticleService extends IService<AppArticle> {
      * @return 文章详情
      */
     RespResult loadArticleInfo(ArticleInfoDto dto);
+
+    /**
+     * 收藏
+     * @param dto
+     * @return
+     */
+    RespResult collection(ArticleCollectionDto dto);
 }

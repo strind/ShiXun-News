@@ -23,5 +23,10 @@ public class ArticleConstants {
     public static final Integer HOT_ARTICLE_COLLECTION_WEIGHT = 8;
     public static final String HOT_ARTICLE_FIRST_PAGE = "hot_article_first_page_";
 
+    public static final Short LIKE_TYPE = 0;
+    public static final Short COLLECTION_TYPE = 1;
+    public static final Short COMMENT_TYPE = 2;
+    public static final Short VIEWS_TYPE = 3;
+
 
 }

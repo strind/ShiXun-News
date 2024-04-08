@@ -38,3 +38,15 @@ spring:
             - Path=/article/**
           filters:
             - StripPrefix=1
+
+        - id: behavior-service
+          uri: lb://behavior-service
+          predicates:
+            - Path=/behavior/**
+          filters:
+            - StripPrefix=1
+
+        - id: comment-service
+          uri: lb://behavior-service
+          predicates:
+            - Path=/comment/**

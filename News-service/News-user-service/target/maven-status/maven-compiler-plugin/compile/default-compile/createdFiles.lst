@@ -1,3 +1,5 @@
+com\strind\dubbo\FindUserNameImpl.class
+com\strind\dubbo\UserService.class
 com\strind\config\WebMvcConfig.class
 com\strind\mapper\AppUserMapper.class
 com\strind\service\AppUserRelationService.class

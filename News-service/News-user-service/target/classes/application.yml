@@ -2,6 +2,10 @@
 spring:
   profiles:
     active: dev
+  redis:
+    host: 123.57.165.115
+    port: 8567
+    password: 123321
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver

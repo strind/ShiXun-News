@@ -1,4 +1,4 @@
-package com.strind.commonInterface;
+package com.strind.commonInterface.article;
 
 import com.strind.model.article.pojos.AppArticle;
 

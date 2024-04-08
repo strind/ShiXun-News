@@ -1,11 +1,27 @@
 
-c
-java:S2259W"AA "NullPointerException" could be thrown; "dto" is nullable here.(ÀÓ”÷ûÿÿÿÿ8„Û ê1
+J
+java:S5411i"(Use a primitive boolean expression here.(—ÍĞıÿÿÿÿ8æ©…ğë1
+J
+java:S5411j"(Use a primitive boolean expression here.(ñ§Íñùÿÿÿÿ8æ©…ğë1
+E
+java:S5411k"(Use a primitive boolean expression here.(‡’ÃØ8æ©…ğë1
+J
+java:S5411l"(Use a primitive boolean expression here.(ü¨ùçşÿÿÿÿ8æ©…ğë1
+d
+java:S2259º"AA "NullPointerException" could be thrown; "dto" is nullable here.(ÀÓ”÷ûÿÿÿÿ8ú©…ğë1
 _
-java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8…Û ê1
+java:S68130"BRemove this field injection and use constructor injection instead.(êæÄŞ8û©…ğë1
 _
-java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ8…Û ê1
-Z
-java:S1854^"8Remove this useless assignment to local variable "type".(’õóüüÿÿÿÿ8‰Û ê1
-O
-java:S1135l"2Complete the task associated to this TODO comment.(…ôıì8ŒÛ ê1
+java:S68133"BRemove this field injection and use constructor injection instead.(êæÄŞ8û©…ğë1
+_
+java:S68136"BRemove this field injection and use constructor injection instead.(êæÄŞ8û©…ğë1
+_
+java:S68139"BRemove this field injection and use constructor injection instead.(êæÄŞ8û©…ğë1
+T
+java:S1135h"2Complete the task associated to this TODO comment.(³”ôàûÿÿÿÿ8ş©…ğë1
+[
+java:S1854Á"8Remove this useless assignment to local variable "type".(’õóüüÿÿÿÿ8ª…ğë1
+P
+java:S1135Ï"2Complete the task associated to this TODO comment.(…ôıì8ƒª…ğë1
+C
+java:S1068C"&Remove this unused "NO" private field.(ÂƒÚŠ8…ª…ğë1

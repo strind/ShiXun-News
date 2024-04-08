@@ -1,5 +1,7 @@
 
 _
+java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8Œ¹Ÿê1
+_
 java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ8Œ¹Ÿê1
 _
 java:S6813,"BRemove this field injection and use constructor injection instead.(êæÄŞ8Œ¹Ÿê1
@@ -7,7 +9,5 @@ _
 java:S6813/"BRemove this field injection and use constructor injection instead.(êæÄŞ8Œ¹Ÿê1
 _
 java:S68132"BRemove this field injection and use constructor injection instead.(êæÄŞ8Œ¹Ÿê1
-_
-java:S68135"BRemove this field injection and use constructor injection instead.(êæÄŞ8Œ¹Ÿê1
 a
-java:S3252K"DUse static access with "com.alibaba.fastjson.JSON" for "parseArray".(Úá¤…8’¹Ÿê1
+java:S3252H"DUse static access with "com.alibaba.fastjson.JSON" for "parseArray".(Úá¤…8’¹Ÿê1
