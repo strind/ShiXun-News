@@ -8,4 +8,8 @@
         from wm_channel
         where id = #{channelId}
     </select>
+    <select id="findChannels" resultType="java.lang.String">
+        select name
+        from wm_channel
+    </select>
 </mapper>

@@ -6,6 +6,7 @@ import com.strind.model.article.dtos.ArticleHomeDto;
 import com.strind.model.article.pojos.AppArticle;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -19,6 +20,8 @@ import java.util.List;
 public interface AppArticleMapper extends BaseMapper<AppArticle> {
 
     List<AppArticle> loadArticleList(ArticleHomeDto dto, Short type);
+
+    List<AppArticle> selectIn7Days(Date time);
 
 
 }

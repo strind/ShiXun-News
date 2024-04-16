@@ -34,7 +34,7 @@ public class WmUserServiceImpl extends ServiceImpl<WmUserMapper, WmUser> impleme
     @Autowired
     private WmUserMapper wmUserMapper;
 
-    @DubboReference
+    @DubboReference(check = false)
     private AddAuthor addAuthor;
 
     /**

@@ -4,7 +4,6 @@ import com.strind.constants.ArticleConstants;
 import com.strind.model.article.dtos.ArticleHomeDto;
 import com.strind.model.common.RespResult;
 import com.strind.service.AppArticleService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,8 +30,7 @@ public class ArticleHomeController {
      */
     @PostMapping("/load")
     public RespResult load(@RequestBody ArticleHomeDto dto){
-        // TODO: 2024/3/21 加载首页文章，未使用缓存
-        return appArticleService.load(dto,ArticleConstants.LOADTYPE_LOAD_MORE);
+        return appArticleService.load(dto,ArticleConstants.LOADTYPE_LOAD_MORE,true);
     }
 
     /**
@@ -42,7 +40,6 @@ public class ArticleHomeController {
      */
     @PostMapping("/loadmore")
     public RespResult loadmore(@RequestBody ArticleHomeDto dto){
-        // TODO: 2024/3/21 加载跟多文章
         return  appArticleService.loadmore(dto,ArticleConstants.LOADTYPE_LOAD_MORE);
     }
 

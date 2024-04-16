@@ -1,4 +1,5 @@
 com\strind\config\WebMvcConfig.class
+com\strind\dubbo\UpdateArticleBasicInfo.class
 com\strind\controller\ArticleHomeController.class
 com\strind\mapper\AppArticleCollectionMapper.class
 com\strind\ArticleApplication.class

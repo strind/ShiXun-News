@@ -47,4 +47,15 @@
         order by aa.publish_time desc
         limit #{dto.size}
     </select>
+    <select id="selectIn7Days" resultMap="resultMap">
+        select aa.*
+        from ap_article as aa
+        left join ap_article_config as aac on aa.id = aac.article_id
+        <where>
+            and aac.is_delete != 1
+            and aac.is_down != 1
+            and aa.publish_time <![CDATA[>]]> #{time}
+        </where>
+        order by aa.publish_time desc
+    </select>
 </mapper>

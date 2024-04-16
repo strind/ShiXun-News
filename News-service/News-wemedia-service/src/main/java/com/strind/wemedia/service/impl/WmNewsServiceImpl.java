@@ -315,7 +315,6 @@ public class WmNewsServiceImpl extends ServiceImpl<WmNewsMapper, WmNews> impleme
         wmNewsMaterialMapper.delete(Wrappers.<WmNewsMaterial>lambdaQuery().eq(WmNewsMaterial::getNewsId,id));
         // 是否存在任务
         if (wmNews.getPublishTime().getTime() - wmNews.getCreatedTime().getTime() > RabbitMQConstants.DELAY_TIME){
-            // TODO: 2024/4/3  间隔大于 12 小时，有任务，要进行删除
             removeTask.removeTask(wmNews.getId());
         }
         // 删除文章的数据

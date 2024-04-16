@@ -28,5 +28,12 @@ public class ArticleConstants {
     public static final Short COMMENT_TYPE = 2;
     public static final Short VIEWS_TYPE = 3;
 
+    /**
+     * 计算热点文章时，相应用户行为的权重
+     */
+    public static final Integer LIKE_WEIGHT = 3;
+    public static final Integer COMMENT_WEIGHT = 5;
+    public static final Integer COLLECTION_WEIGHT = 8;
+
 
 }

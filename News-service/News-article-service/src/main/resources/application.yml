@@ -36,3 +36,12 @@ minio:
   bucket: shixun
   endpoint: http://123.57.165.115:9000
   readPath: http://123.57.165.115:9000
+
+xxl:
+  job:
+    admin:
+      address: http://123.57.165.115:7171/xxl-job-admin
+    executor:
+      appname: xxl-job-executor-ShiXun
+      port: 9999
+    accessToken: default_token

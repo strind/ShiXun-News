@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.strind.model.wemedia.pojos.WmChannel;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * @author strind
  * @version 1.0
@@ -14,4 +16,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface WmChannelMapper extends BaseMapper<WmChannel> {
 
     String selectOnlyName(Integer channelId);
+
+
+    List<String> findChannels();
+
 }

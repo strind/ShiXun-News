@@ -17,10 +17,12 @@ public interface AppArticleService extends IService<AppArticle> {
 
     /**
      * 加载首页内容
+     *
      * @param dto 参数
+     * @param b
      * @return 文章
      */
-    RespResult load(ArticleHomeDto dto, Short type);
+    RespResult load(ArticleHomeDto dto, Short type, boolean firstPage);
 
     /**
      * 加载更多

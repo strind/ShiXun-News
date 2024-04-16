@@ -42,7 +42,6 @@ public class AppUserRelationServiceImpl implements AppUserRelationService {
     @Override
     @Transactional
     public RespResult follow(UserRelationDto dto) {
-        // TODO: 2024/3/21 用户关注与取关功能
         AppUser currentUser = AppThreadLocalUtil.getUser();
         if (currentUser == null){
             return RespResult.errorResult(AppHttpCodeEnum.AP_USER_DATA_NOT_EXIST);

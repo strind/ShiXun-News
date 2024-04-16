@@ -1,9 +1,10 @@
 package com.strind.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.google.errorprone.annotations.Var;
 import com.strind.common.ProtostuffUtil;
 import com.strind.commonInterface.article.UpdateArticleInfo;
 import com.strind.commonInterface.user.IsFan;
@@ -19,6 +20,7 @@ import com.strind.model.article.pojos.AppArticle;
 import com.strind.model.article.pojos.AppArticleCollection;
 import com.strind.model.article.pojos.AppArticleConfig;
 import com.strind.model.article.vos.ArticleInfoVO;
+import com.strind.model.article.vos.HotArticleVO;
 import com.strind.model.common.RespResult;
 import com.strind.model.common.enums.AppHttpCodeEnum;
 import com.strind.rabbitmq.RabbitMQConstants;
@@ -67,17 +69,25 @@ public class AppArticleServiceImpl extends ServiceImpl<AppArticleMapper, AppArti
     private static final Short NO = 1;
 
     @Override
-    public RespResult load(ArticleHomeDto dto, Short type) {
+    public RespResult load(ArticleHomeDto dto, Short type, boolean firstPage) {
         checkOrInit(dto, type);
-        List<AppArticle> appArticles = appArticleMapper.loadArticleList(dto,type);
-
+        // 加载首页，首先查询缓存。
+        if (firstPage){
+            String key = RedisConstants.HOT_ARTICLE_CACHE + ArticleConstants.DEFAULT_TAG;
+            String s = cacheService.get(key);
+            if (StringUtils.isNotBlank(s)){
+                List<HotArticleVO> hotArticleVOS = JSONObject.parseArray(s, HotArticleVO.class);
+                return RespResult.okResult(hotArticleVOS);
+            }
+        }
+        List<AppArticle> appArticles = appArticleMapper.loadArticleList(dto, type);
         return RespResult.okResult(appArticles);
     }
 
 
     @Override
     public RespResult loadmore(ArticleHomeDto dto, Short type) {
-        return load(dto,type);
+        return load(dto,type, false);
     }
 
     /**
@@ -87,7 +97,7 @@ public class AppArticleServiceImpl extends ServiceImpl<AppArticleMapper, AppArti
      */
     @Override
     public RespResult loadnew(ArticleHomeDto dto, Short type) {
-        return load(dto,type);
+        return load(dto,type, false);
     }
 
     /**
@@ -255,5 +265,7 @@ public class AppArticleServiceImpl extends ServiceImpl<AppArticleMapper, AppArti
             updateArticleInfo.updateArticlesInfo(list, ArticleConstants.VIEWS_TYPE);
         }
     }
+
+
 
 }

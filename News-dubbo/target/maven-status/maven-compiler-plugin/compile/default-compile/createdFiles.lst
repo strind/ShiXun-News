@@ -2,6 +2,7 @@ com\strind\commonInterface\article\SaveArticle.class
 com\strind\commonInterface\user\IsFan.class
 com\strind\commonInterface\task\AddTask.class
 com\strind\commonInterface\article\PublishNews.class
+com\strind\commonInterface\article\UpdateArticleInfo.class
 com\strind\commonInterface\task\RemoveTask.class
 com\strind\commonInterface\article\AddAuthor.class
 com\strind\commonInterface\user\FindUserName.class

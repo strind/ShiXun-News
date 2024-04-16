@@ -13,6 +13,10 @@ spring:
     url: jdbc:mysql://localhost:3306/leadnews-task?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: 200339LHT
+  redis:
+    host: 123.57.165.115
+    port: 8567
+    password: 123321
 xxl:
   job:
     admin:

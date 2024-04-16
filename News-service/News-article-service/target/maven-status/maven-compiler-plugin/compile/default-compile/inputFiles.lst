@@ -7,6 +7,7 @@ E:\work_project\ShiXun_News\News-service\News-article-service\src\main\java\com\
 E:\work_project\ShiXun_News\News-service\News-article-service\src\main\java\com\strind\dubbo\SaveArticleService.java
 E:\work_project\ShiXun_News\News-service\News-article-service\src\main\java\com\strind\interceptor\AppTokenInterceptor.java
 E:\work_project\ShiXun_News\News-service\News-article-service\src\main\java\com\strind\mapper\AppAuthorMapper.java
+E:\work_project\ShiXun_News\News-service\News-article-service\src\main\java\com\strind\dubbo\UpdateArticleBasicInfo.java
 E:\work_project\ShiXun_News\News-service\News-article-service\src\main\java\com\strind\controller\ArticleHomeController.java
 E:\work_project\ShiXun_News\News-service\News-article-service\src\main\java\com\strind\config\WebMvcConfig.java
 E:\work_project\ShiXun_News\News-service\News-article-service\src\main\java\com\strind\service\AppArticleService.java
